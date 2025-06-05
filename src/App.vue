@@ -16,12 +16,15 @@
           v-for="item in navItems"
           :key="item.key"
           :to="item.to"
-          class="px-4 py-2 font-medium transition bg-transparent hover:text-blue-600"
+          class="px-4 py-2 font-medium transition bg-transparent hover:text-blue-600 flex items-center gap-1"
           :class="{
             'text-blue-600': $route.path === item.to,
             'text-slate-950': $route.path !== item.to,
           }"
         >
+          <span v-if="item.icon" class="material-icons text-base align-middle">{{
+            item.icon
+          }}</span>
           {{ item.label }}
         </router-link>
       </nav>
@@ -73,11 +76,11 @@
 import { ref, onMounted, onUnmounted } from "vue";
 const navItems = [
   { key: "landing", label: "Home", to: "/" },
-  { key: "features", label: "Features", to: "/features" },
-  { key: "showcase", label: "Showcase", to: "/showcase" },
-  { key: "learn", label: "Learn", to: "/learn" },
-  { key: "about", label: "About", to: "/about" },
-  { key: "blog", label: "Blog", to: "/blog" },
+  { key: "features", label: "Features", to: "/features", icon: "star" },
+  { key: "showcase", label: "Showcase", to: "/showcase", icon: "visibility" },
+  { key: "learn", label: "Learn", to: "/learn", icon: "school" },
+  { key: "about", label: "About", to: "/about", icon: "info" },
+  { key: "blog", label: "Blog", to: "/blog", icon: "article" },
 ];
 const scrolled = ref(false);
 const onScroll = () => {
@@ -90,3 +93,18 @@ onUnmounted(() => {
   window.removeEventListener("scroll", onScroll);
 });
 </script>
+
+<style>
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+  -webkit-font-smoothing: antialiased;
+}
+</style>

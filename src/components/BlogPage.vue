@@ -3,7 +3,8 @@
     class="max-w-4xl mx-auto my-12 p-8 bg-section-white rounded-2xl shadow flex flex-col gap-10"
   >
     <div class="text-center">
-      <h1 class="text-3xl md:text-4xl font-extrabold text-blue-highlight mb-2">
+      <h1 class="text-3xl md:text-4xl font-extrabold text-blue-highlight mb-2 flex items-center gap-2">
+        <span class="material-icons text-2xl align-middle">insights</span>
         Insights & Updates
       </h1>
       <p class="text-lg text-elegant">
@@ -14,7 +15,8 @@
       v-if="mainBlog"
       class="bg-gradient-to-r from-blue-highlight to-zinc-muted rounded-xl p-6 shadow text-center mb-4"
     >
-      <h2 class="text-2xl font-bold text-blue-highlight mb-1">
+      <h2 class="text-2xl font-bold text-indigo-600 mb-1 flex items-center gap-2">
+        <span class="material-icons text-lg align-middle">auto_awesome</span>
         {{ mainBlog.title }}
       </h2>
       <p class="text-zinc-muted text-xs mb-2">{{ mainBlog.date }}</p>
@@ -28,7 +30,8 @@
         :key="post.id"
         class="bg-zinc-muted rounded-xl shadow p-6 flex flex-col gap-2"
       >
-        <h3 class="text-blue-highlight font-semibold text-lg">
+        <h3 class="text-blue-highlight font-semibold text-lg flex items-center gap-1">
+          <span class="material-icons text-base align-middle">article</span>
           {{ post.title }}
         </h3>
         <p class="text-zinc-muted text-xs mb-1">{{ post.date }}</p>

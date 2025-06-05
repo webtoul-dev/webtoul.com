@@ -3,7 +3,10 @@
     class="max-w-5xl mx-auto my-12 p-8 bg-section-white rounded-2xl shadow flex flex-col gap-12"
   >
     <div class="text-center">
-      <h1 class="text-4xl font-extrabold text-blue-highlight mb-4">
+      <h1
+        class="text-4xl font-extrabold text-blue-highlight mb-4 flex items-center gap-2"
+      >
+        <span class="material-icons text-3xl align-middle">school</span>
         Master Webtoul.com: Your Guide to AI-Powered Web Creation
       </h1>
       <p class="text-lg text-elegant mb-6">
@@ -16,7 +19,12 @@
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       <div class="bg-zinc-muted rounded-xl shadow p-6 flex flex-col gap-2">
-        <h2 class="text-xl font-bold text-blue-highlight mb-1">
+        <h2
+          class="text-xl font-bold text-blue-highlight mb-1 flex items-center gap-1"
+        >
+          <span class="material-icons text-base align-middle"
+            >rocket_launch</span
+          >
           Getting Started with Webtoul.com
         </h2>
         <p class="text-elegant mb-2">
@@ -31,7 +39,12 @@
         </button>
       </div>
       <div class="bg-zinc-muted rounded-xl shadow p-6 flex flex-col gap-2">
-        <h2 class="text-xl font-bold text-blue-highlight mb-1">
+        <h2
+          class="text-xl font-bold text-blue-highlight mb-1 flex items-center gap-1"
+        >
+          <span class="material-icons text-base align-middle"
+            >dashboard_customize</span
+          >
           Leveraging the AI Website Architect
         </h2>
         <p class="text-elegant mb-2">
@@ -46,7 +59,10 @@
         </button>
       </div>
       <div class="bg-zinc-muted rounded-xl shadow p-6 flex flex-col gap-2">
-        <h2 class="text-xl font-bold text-blue-highlight mb-1">
+        <h2
+          class="text-xl font-bold text-blue-highlight mb-1 flex items-center gap-1"
+        >
+          <span class="material-icons text-base align-middle">text_fields</span>
           Dominating Content with the AI Content Crafter
         </h2>
         <p class="text-elegant mb-2">
@@ -61,7 +77,10 @@
         </button>
       </div>
       <div class="bg-zinc-muted rounded-xl shadow p-6 flex flex-col gap-2">
-        <h2 class="text-xl font-bold text-blue-highlight mb-1">
+        <h2
+          class="text-xl font-bold text-blue-highlight mb-1 flex items-center gap-1"
+        >
+          <span class="material-icons text-base align-middle">palette</span>
           Designing Like a Pro with the AI Design Assistant
         </h2>
         <p class="text-elegant mb-2">
@@ -77,7 +96,12 @@
         </button>
       </div>
       <div class="bg-zinc-muted rounded-xl shadow p-6 flex flex-col gap-2">
-        <h2 class="text-xl font-bold text-blue-highlight mb-1">
+        <h2
+          class="text-xl font-bold text-blue-highlight mb-1 flex items-center gap-1"
+        >
+          <span class="material-icons text-base align-middle"
+            >help_outline</span
+          >
           FAQs & Troubleshooting
         </h2>
         <p class="text-elegant mb-2">
@@ -118,3 +142,19 @@ function goToGuide(guideId) {
   router.push({ name: "Guide", params: { id: guideId } });
 }
 </script>
+
+<style>
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+</style>

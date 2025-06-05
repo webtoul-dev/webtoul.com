@@ -17,11 +17,9 @@
       <div
         class="bg-zinc-muted rounded-xl shadow p-6 flex flex-col items-center text-center"
       >
-        <img
-          src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80"
-          class="w-full h-32 object-cover rounded mb-2"
-          alt="Portfolio Example"
-        />
+        <span class="material-icons text-3xl text-blue-highlight mb-2"
+          >brush</span
+        >
         <h2 class="text-lg font-bold text-blue-highlight mb-1">
           Sleek Portfolios for Creatives
         </h2>
@@ -41,11 +39,9 @@
       <div
         class="bg-zinc-muted rounded-xl shadow p-6 flex flex-col items-center text-center"
       >
-        <img
-          src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80"
-          class="w-full h-32 object-cover rounded mb-2"
-          alt="Business Example"
-        />
+        <span class="material-icons text-3xl text-blue-highlight mb-2"
+          >storefront</span
+        >
         <h2 class="text-lg font-bold text-blue-highlight mb-1">
           Local Business Hub
         </h2>
@@ -64,11 +60,9 @@
       <div
         class="bg-zinc-muted rounded-xl shadow p-6 flex flex-col items-center text-center"
       >
-        <img
-          src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80"
-          class="w-full h-32 object-cover rounded mb-2"
-          alt="Blog Example"
-        />
+        <span class="material-icons text-3xl text-blue-highlight mb-2"
+          >rss_feed</span
+        >
         <h2 class="text-lg font-bold text-blue-highlight mb-1">Dynamic Blog</h2>
         <p class="text-elegant mb-2">
           Share your voice and ideas with the world. Launch a beautiful,
@@ -86,11 +80,9 @@
       <div
         class="bg-zinc-muted rounded-xl shadow p-6 flex flex-col items-center text-center"
       >
-        <img
-          src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80"
-          class="w-full h-32 object-cover rounded mb-2"
-          alt="Storefront Example"
-        />
+        <span class="material-icons text-3xl text-blue-highlight mb-2"
+          >shopping_bag</span
+        >
         <h2 class="text-lg font-bold text-blue-highlight mb-1">
           Online Storefront Teaser
         </h2>

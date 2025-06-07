@@ -8,7 +8,7 @@
     >
       <div class="flex items-center gap-3 cursor-pointer">
         <router-link to="/">
-          <img src="/vite.svg" alt="AI Website Builder Logo" class="h-10" />
+          <img src="/logo.svg" alt="AI Website Builder Logo" class="h-12" />
         </router-link>
       </div>
       <nav class="flex gap-1">
@@ -22,9 +22,11 @@
             'text-slate-950': $route.path !== item.to,
           }"
         >
-          <span v-if="item.icon" class="material-icons text-base align-middle">{{
-            item.icon
-          }}</span>
+          <span
+            v-if="item.icon"
+            class="material-icons text-base align-middle"
+            >{{ item.icon }}</span
+          >
           {{ item.label }}
         </router-link>
       </nav>
@@ -41,7 +43,7 @@
         >
       </div>
     </header>
-    <main class="flex-1 px-2 max-w-5xl w-full mx-auto">
+    <main class="flex-1 px-2 max-w-[1800px] w-full mx-auto scroll-smooth">
       <router-view />
     </main>
     <footer
@@ -99,7 +101,6 @@ onUnmounted(() => {
   font-family: "Material Icons";
   font-weight: normal;
   font-style: normal;
-  display: inline-block;
   line-height: 1;
   text-transform: none;
   margin: 0;

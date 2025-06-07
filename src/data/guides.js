@@ -3,6 +3,10 @@ export default [
   {
     id: "quickstart",
     title: "Your First AI-Generated Website: A 5-Minute Quickstart",
+    icon: "rocket_launch",
+    title_card: "Getting Started with Webtoul.com",
+    button: "Guide: “Your First AI-Generated Website: A 5-Minute Quickstart”",
+    desc: "Learn the basics: from signing up to launching your first AI-generated website.",
     headline:
       "Your First AI-Generated Website: From Idea to Launch in 5 Minutes",
     content: `Welcome to Webtoul.com! You're just moments away from experiencing the future of web creation. This quickstart guide will walk you through the effortless process of generating your first website using our intelligent AI. No code, no complex menus – just your vision and our AI working in harmony. Let's begin!
@@ -46,6 +50,10 @@ Congratulations! You've just generated a website with AI in under 5 minutes. Exp
   {
     id: "prompt-perfect",
     title: "Prompt Perfect: Crafting Inputs for a Stunning AI Layout",
+    icon: "dashboard_customize",
+    title_card: "Leveraging the AI Website Architect",
+    desc: "Discover how to give effective prompts and choose the perfect style for your site.",
+    button: "Guide: “Prompt Perfect: Crafting Inputs for a Stunning AI Layout”",
     headline:
       "Prompt Perfect: Mastering AI Inputs for Exceptional Website Layouts",
     content: `The AI Website Architect at Webtoul.com is a powerful tool for generating professional website structures and layouts. However, the quality of its output is significantly influenced by the clarity and specificity of your input. This guide will teach you how to "speak the AI's language" to achieve truly stunning and functional designs from the get-go.
@@ -96,6 +104,11 @@ Mastering the art of prompting is your shortcut to leveraging the full potential
   {
     id: "ai-writer",
     title: "From Blank Page to Brilliant Copy: Tips for the AI Writer",
+    title_card: "Dominating Content with the AI Content Crafter",
+    icon: "text_fields",
+    desc: "Tips for generating headlines, product descriptions, and refining AI suggestions.",
+    button:
+      "Guide: “From Blank Page to Brilliant Copy: Tips for the AI Writer”",
     headline:
       "Unlock Your Voice: Crafting Compelling Content with the AI Content Crafter",
     content: `Content is king, but staring at a blank page can be daunting. Webtoul.com's AI Content Crafter is your ally, designed to help you generate engaging headlines, persuasive body copy, effective calls-to-action, and much more. This guide provides tips to transform your ideas into brilliant, conversion-focused text.
@@ -147,6 +160,11 @@ The AI Content Crafter is more than just a text generator; it's a creative assis
   {
     id: "ai-design",
     title: "AI-Enhanced Aesthetics: Making Your Site Visually Irresistible",
+    icon: "palette",
+    title_card: "Designing Like a Pro with the AI Design Assistant",
+    desc: "Master color theory, font pairing, and visual hierarchy with AI support.",
+    button:
+      "Guide: “AI-Enhanced Aesthetics: Making Your Site Visually Irresistible”",
     headline:
       "Design Like a Pro (Without Being One): Mastering Visuals with the AI Design Assistant",
     content: `A visually appealing website captivates visitors and builds credibility. Webtoul.com's AI Design Assistant empowers you to achieve a professional, polished look, even if you have no prior design experience. This guide explores how to leverage its intelligence for stunning color palettes, typography, imagery, and overall visual harmony.
@@ -195,6 +213,10 @@ The AI Design Assistant is your collaborative partner in creating a visually irr
     id: "faq",
     title: "FAQs & Troubleshooting",
     headline: "Webtoul.com Help Hub: FAQs & Troubleshooting",
+    icon: "help_outline",
+    title_card: "FAQs & Troubleshooting",
+    button: "Guide: “FAQs & Troubleshooting”",
+    desc: "Find answers to common questions and quick fixes for any issues.",
     content: `We've designed Webtoul.com to be as intuitive as possible, but sometimes questions arise or you might encounter a hiccup. This FAQ and troubleshooting guide is here to provide quick answers and solutions to common queries.
 
 General Questions:

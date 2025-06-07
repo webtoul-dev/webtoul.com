@@ -15,9 +15,7 @@
       coding, no hassle—just your vision, brought to life.
     </p>
     <router-link to="/editor">
-      <Motion
-        tag="router-link"
-        to="/editor"
+      <motion.div
         class="bg-gradient-to-r from-blue-highlight to-blue-600 text-section-white px-8 py-3 rounded-full text-lg font-semibold shadow hover:from-blue-500 hover:to-blue-700 flex items-center gap-2 relative group"
         :initial="{ scale: 1 }"
         :animate="
@@ -31,8 +29,7 @@
         style="isolation: isolate"
       >
         <span class="relative flex items-center justify-center w-8 h-8 mr-1">
-          <Motion
-            tag="span"
+          <motion.span
             class="material-icons align-middle text-xl"
             :initial="{ y: 0, rotate: 0, color: '#fff', scale: 1 }"
             :animate="
@@ -42,11 +39,10 @@
             "
             :transition="{ type: 'spring', stiffness: 400, damping: 18 }"
             style="display: inline-block; will-change: transform; z-index: 2"
-            >rocket_launch</Motion
+            >rocket_launch</motion.span
           >
-          <Motion
+          <motion.span
             v-if="rocketHover"
-            tag="span"
             class="absolute left-1/2 top-1/2 pointer-events-none select-none"
             :initial="{ opacity: 0, scaleY: 0.5, y: 8 }"
             :animate="{ opacity: 0.5, scaleY: 1, y: 12 }"
@@ -67,13 +63,12 @@
               top: 80%;
               transform: translate(-50%, 0);
             "
-          />
+          ></motion.span>
         </span>
         <span class="relative z-10">Try the Builder</span>
-      </Motion>
+      </motion.div>
     </router-link>
-    <Motion
-      tag="img"
+    <motion.img
       src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=800&q=80"
       alt="AI Website Builder"
       class="w-auto max-h-96 rounded-lg shadow-lg mt-6"
@@ -83,7 +78,7 @@
     />
   </section>
   <section
-    class="max-w-5xl mx-auto my-20 p-8 flex flex-col md:flex-row items-scratch gap-12 bg-section-white"
+    class="mx-auto my-20 p-8 flex flex-col md:flex-row items-scratch gap-12 bg-section-white"
   >
     <!-- About Section -->
     <div
@@ -107,10 +102,9 @@
           Contact
         </h3>
         <div class="flex flex-col gap-4 w-full">
-          <Motion
+          <motion.div
             v-for="(item, idx) in contactItems"
             :key="item.label"
-            tag="div"
             class="relative group cursor-pointer"
             :initial="{ scale: 1, boxShadow: '0 0 0 0 #60a5fa00' }"
             :animate="
@@ -124,8 +118,7 @@
             style="overflow: hidden"
           >
             <!-- Border Animation -->
-            <Motion
-              tag="span"
+            <motion.span
               class="absolute inset-0 pointer-events-none border-2 border-blue-highlight rounded-lg"
               :initial="{ scaleX: 0, scaleY: 0, opacity: 0 }"
               :animate="
@@ -139,10 +132,9 @@
                 z-index: 1;
                 display: block;
               "
-            />
+            ></motion.span>
             <!-- Gradient BG Animation -->
-            <Motion
-              tag="span"
+            <motion.span
               class="absolute inset-0 z-0 rounded-lg"
               :initial="{ x: '-20%', opacity: 0.7 }"
               :animate="
@@ -159,7 +151,7 @@
                 zIndex: 0,
                 display: 'block',
               }"
-            />
+            ></motion.span>
             <a :href="item.link">
               <p
                 class="relative z-10 text-zinc-muted text-sm flex items-center gap-2 px-6 py-4 font-medium"
@@ -175,7 +167,7 @@
                 <span>{{ item.label }}: {{ item.value }}</span>
               </p>
             </a>
-          </Motion>
+          </motion.div>
         </div>
       </div>
       <div
@@ -225,8 +217,7 @@
       >
         <img :src="p.logo" :alt="p.name" class="h-12 mb-2" />
         <!-- add a popover when hovering metnioning the company name -->
-        <Motion
-          tag="div"
+        <motion.div
           class="absolute -top-14 left-0 right-0 mx-auto bg-white text-blue-highlight text-sm font-thin px-4 py-2 rounded-lg shadow w-fit"
           :initial="{ opacity: 0, y: 10 }"
           :animate="
@@ -238,7 +229,7 @@
           style="z-index: 10; pointer-events: none"
         >
           {{ p.name }}
-        </Motion>
+        </motion.div>
       </a>
     </div>
   </section>
@@ -275,8 +266,7 @@
             {{ f }}
           </li>
         </ul>
-        <Motion
-          tag="button"
+        <motion.button
           class="w-full text-center bg-blue-highlight text-section-white px-6 py-3 font-semibold hover:bg-blue-600"
           :initial="{
             scale: 1,
@@ -294,7 +284,7 @@
           @mouseleave="hoveredIndex = null"
         >
           Choose
-        </Motion>
+        </motion.button>
       </div>
     </div>
   </section>
@@ -308,8 +298,7 @@
       class="relative text-4xl font-bold text-blue-highlight mb-6 flex items-center gap-2"
     >
       What Our Users Say
-      <Motion
-        tag="div"
+      <motion.div
         class="absolute -bottom-2 left-0 right-0 h-[2px] bg-blue-highlight width-full"
         :initial="{ scaleX: 0 }"
         :animate="{ scaleX: hoveredSection === 'testimonials' ? 1 : 0 }"
@@ -317,7 +306,7 @@
         :transition="{ duration: 1, ease: 'linear' }"
         style="transform-origin: center center"
       >
-      </Motion>
+      </motion.div>
     </h2>
     <div class="flex flex-wrap justify-center gap-8">
       <div
@@ -326,17 +315,16 @@
         class="relative"
         @click="selectedIndex = testimonials.indexOf(t)"
       >
-        <Motion
-          tag="div"
+        <motion.div
           class="absolute top-0 right-0 left-0 bottom-0 m-auto rounded-lg w-[85%] h-[85%] bg-blue-900 flex items-center justify-center"
           :initial="{ scale: 0 }"
           :animate="{
             scale: selectedIndex === testimonials.indexOf(t) ? 1 : 0,
           }"
           :exit="{ scale: 0 }"
-          :transition="{ duration: 0.3, ease: 'ease-in-out' }"
+          :transition="{ duration: 0.3 }"
           style="transform-origin: center center"
-        ></Motion>
+        ></motion.div>
         <div
           class="relative bg-white/10 backdrop-blur-sm rounded-lg shadow cursor-pointer hover:shadow-blue-highlight transition-shadow duration-300 hover:shadow-md p-6 py-8 text-section-white max-w-xs flex flex-col items-center h-full"
         >
@@ -382,8 +370,7 @@
         class="object-cover h-[500px] w-full rounded-lg mb-4"
       />
     </div>
-    <Motion
-      tag="div"
+    <motion.div
       class="bg-white rounded-lg shadow p-6 text-left h-full flex flex-col justify-between"
       :initial="{ opacity: 0, y: 20 }"
       :animate="{ opacity: 1, y: 0 }"
@@ -402,8 +389,7 @@
           class="rounded-3xl border text-left"
           :class="selectedFAQ === idx ? 'bg-blue-100' : ''"
         >
-          <Motion
-            tag="p"
+          <motion.p
             class="font-bold text-blue-highlight p-3 flex flex-row items-center w-full justify-between cursor-pointer"
             :initial="{ opacity: 0, y: 20 }"
             :animate="{ opacity: 1, y: 0 }"
@@ -424,10 +410,9 @@
                   : "keyboard_arrow_down"
               }}
             </span>
-          </Motion>
-          <Motion
+          </motion.p>
+          <motion.p
             v-if="selectedFAQ === idx"
-            tag="p"
             :initial="{ opacity: 0, height: 0, y: -20 }"
             :animate="{ opacity: 1, height: 'auto', y: 0 }"
             :exit="{ opacity: 0, height: 0, y: -20 }"
@@ -436,13 +421,12 @@
             :class="selectedFAQ === idx ? 'p-4 px-8' : 'p-0 text-base'"
           >
             A: {{ item.answer }}
-          </Motion>
+          </motion.p>
 
           <!-- <p class="text-zinc-muted">A: {{ item.answer }}</p> -->
         </div>
         <div class="relative">
-          <Motion
-            tag="div"
+          <motion.div
             class="w-full h-12 bg-gradient-to-r from-blue-300 to-blue-100 rounded-full opacity-50"
             :initial="{ scale: 0 }"
             :animate="{
@@ -453,8 +437,7 @@
             :transition="{ duration: 0.4 }"
             style="transform-origin: left center"
           />
-          <Motion
-            tag="Button"
+          <motion.button
             class="absolute top-0 bottom-0 left-2 my-auto self-start px-4 py-2 bg-blue-highlight text-white hover:bg-blue-700 rounded-full"
             :initial="{ opacity: 0, y: 20 }"
             :animate="{
@@ -469,10 +452,10 @@
             @mouseleave="hoveredSection = null"
           >
             {{ showAllFaq ? "Show Less" : "Show More" }}
-          </Motion>
+          </motion.button>
         </div>
       </div>
-    </Motion>
+    </motion.div>
     <div
       v-if="showAllFaq && faq.length > 3"
       class="flex flex-col gap-4 mt-6 border-t pt-4 md:col-span-2"
@@ -483,8 +466,7 @@
         class="rounded-3xl border text-left"
         :class="selectedFAQ === item.question ? 'bg-blue-100' : ''"
       >
-        <Motion
-          tag="p"
+        <motion.p
           class="font-bold text-blue-highlight p-3 flex flex-row items-center w-full justify-between cursor-pointer"
           :initial="{ opacity: 0, y: 20 }"
           :animate="{ opacity: 1, y: 0 }"
@@ -507,10 +489,9 @@
                 : "keyboard_arrow_down"
             }}
           </span>
-        </Motion>
-        <Motion
+        </motion.p>
+        <motion.p
           v-if="selectedFAQ === item.question"
-          tag="p"
           :initial="{ opacity: 0, height: 0, y: -20 }"
           :animate="{ opacity: 1, height: 'auto', y: 0 }"
           :exit="{ opacity: 0, height: 0, y: -20 }"
@@ -518,7 +499,7 @@
           class="text-zinc-muted mt-2 p-4 px-8"
         >
           A: {{ item.answer }}
-        </Motion>
+        </motion.p>
       </div>
     </div>
   </section>
@@ -538,8 +519,8 @@ import blogs from "../data/blogs";
 import faq from "../data/faq";
 import contact from "../data/contact";
 import { ref } from "vue";
-import { Motion } from "@motionone/vue";
 import router from "../router";
+import { motion } from "motion-v";
 
 const partners = [
   {

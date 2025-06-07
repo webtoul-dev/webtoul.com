@@ -1,6 +1,6 @@
 <template>
   <section
-    class="max-w-4xl mx-auto my-12 p-8 bg-section-white rounded-2xl shadow flex flex-col gap-10"
+    class="mx-auto p-12 py-40 bg-gradient-to-r from-blue-50 to-blue-200 flex flex-col gap-10"
   >
     <div class="text-center">
       <h1 class="text-3xl md:text-4xl font-extrabold text-blue-highlight mb-2">
@@ -27,6 +27,8 @@
         come to life instantly and intuitively.
       </p>
     </div>
+  </section>
+  <section>
     <div>
       <h2 class="text-2xl font-bold text-blue-highlight mb-2">
         The Webtoul.com Philosophy

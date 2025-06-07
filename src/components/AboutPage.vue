@@ -1,30 +1,61 @@
 <template>
   <section
-    class="mx-auto p-12 py-40 bg-gradient-to-r from-blue-50 to-blue-200 flex flex-col gap-10"
+    class="mx-auto p-12 py-20 bg-gradient-to-r from-blue-50 to-blue-200 grid grid-cols-1 md:grid-cols-2 gap-10"
   >
-    <div class="text-center">
+    <div class="relative flex flex-col items-center justify-center">
+      <motion.img
+        src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=800&q=80"
+        alt="AI Website Builder"
+        class="h-[600px] w-full object-cover rounded-xl"
+      />
+      <div
+        class="absolute bottom-0 max-h-2/3 bg-section-white m-4 flex flex-col items-center justify-center gap-8 rounded-xl p-4"
+      >
+        <div v-if="selectedBox === 'mission'">
+          <h2 class="text-2xl font-bold text-blue-highlight mb-2">
+            Our Mission
+          </h2>
+          <p class="text-elegant text-base mb-4">
+            At Webtoul.com, our mission is simple: to empower anyone—regardless
+            of technical skill—to build beautiful, professional, and effective
+            websites using the power of artificial intelligence. We believe
+            everyone deserves a powerful online presence.
+          </p>
+        </div>
+        <div v-if="selectedBox === 'vision'">
+          <h2 class="text-2xl font-bold text-blue-highlight mb-2">
+            Our Vision
+          </h2>
+          <p class="text-elegant text-base mb-4">
+            We envision a future where creating a website is as easy as
+            describing your idea. With AI as your personal web design team, your
+            digital dreams come to life instantly and intuitively.
+          </p>
+        </div>
+        <div class="flex flex-row gap-2">
+          <div
+            class="w-10 h-1"
+            @click="selectedBox = 'mission'"
+            :class="
+              selectedBox === 'mission' ? 'bg-blue-highlight' : 'bg-blue-100'
+            "
+          ></div>
+          <div
+            class="w-10 h-1"
+            @click="selectedBox = 'vision'"
+            :class="
+              selectedBox === 'vision' ? 'bg-blue-highlight' : 'bg-blue-100'
+            "
+          ></div>
+        </div>
+      </div>
+    </div>
+    <div>
       <h1 class="text-3xl md:text-4xl font-extrabold text-blue-highlight mb-2">
         About Webtoul.com: Revolutionizing Web Creation with AI
       </h1>
       <p class="text-lg text-elegant mb-6">
         Empowering everyone to build a beautiful web presence with AI.
-      </p>
-    </div>
-    <div>
-      <h2 class="text-2xl font-bold text-blue-highlight mb-2">Our Mission</h2>
-      <p class="text-elegant text-base mb-4">
-        At Webtoul.com, our mission is simple: to empower anyone—regardless of
-        technical skill—to build beautiful, professional, and effective websites
-        using the power of artificial intelligence. We believe everyone deserves
-        a powerful online presence.
-      </p>
-    </div>
-    <div>
-      <h2 class="text-2xl font-bold text-blue-highlight mb-2">Our Vision</h2>
-      <p class="text-elegant text-base mb-4">
-        We envision a future where creating a website is as easy as describing
-        your idea. With AI as your personal web design team, your digital dreams
-        come to life instantly and intuitively.
       </p>
     </div>
   </section>
@@ -80,5 +111,9 @@
 </template>
 
 <script setup>
+import { motion } from "motion-v";
+import { ref } from "vue";
+const selectedBox = ref("mission");
+
 // No script needed for static content
 </script>

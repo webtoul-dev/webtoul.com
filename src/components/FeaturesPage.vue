@@ -51,6 +51,7 @@
       :variants="parentVarientUp"
       initial="hidden"
       whileInView="show"
+      :inViewOptions="{ once: true }"
       class="grid grid-cols-1 md:grid-cols-2 items-center border rounded-2xl p-20 gap-8"
       @mouseenter="hoveredSection = 'Feature_1'"
       @mouseleave="hoveredSection = null"
@@ -182,6 +183,7 @@
       :variants="parentVarientLeft"
       initial="hidden"
       whileInView="show"
+      :inViewOptions="{ once: true }"
       class="grid grid-cols-1 md:grid-cols-2 bg-zinc-muted p-8 gap-8"
       @mouseenter="hoveredSection = 'Feature_2'"
       @mouseleave="hoveredSection = null"
@@ -211,16 +213,18 @@
           business and audience.
         </p>
         <ul class="text-section-white mb-2">
-          <li><span class="material-symbols">start</span> writer’s block</li>
-          <li>
+          <li class="flex items-start gap-4">
+            <span class="material-symbols">start</span> writer’s block
+          </li>
+          <li class="flex items-start gap-4">
             <span class="material-symbols">start</span> Save hours on
             copywriting
           </li>
-          <li>
+          <li class="flex items-start gap-4">
             <span class="material-symbols">start</span> SEO-friendly,
             conversion-focused content
           </li>
-          <li>
+          <li class="flex items-start gap-4">
             <span class="material-symbols">start</span> Consistent, professional
             tone
           </li>
@@ -244,6 +248,7 @@
       :variants="parentVarientRight"
       initial="hidden"
       whileInView="show"
+      :inViewOptions="{ once: true }"
       class="grid grid-cols-1 md:grid-cols-2 items-center bg-zinc-900 p-8 gap-8"
       @mouseenter="hoveredSection = 'Feature_3'"
       @mouseleave="hoveredSection = null"
@@ -326,6 +331,7 @@
       :variants="parentVarientUp"
       initial="hidden"
       whileInView="show"
+      :inViewOptions="{ once: true }"
       class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-gradient-to-r from-blue-highlight to-zinc-900 p-8"
       @mouseenter="hoveredSection = 'Feature_4'"
       @mouseleave="hoveredSection = null"
@@ -460,13 +466,13 @@ const parentVarientUp = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.2,
+      duration: 0.1,
       ease: "easeInOut",
       type: "spring",
       stiffness: 200,
-      damping: 15,
+      damping: 30,
       staggerChildren: 0.3,
-      when: "beforeChildren",
+      // when: "beforeChildren",
     },
   },
 };
@@ -476,13 +482,13 @@ const parentVarientLeft = {
     opacity: 1,
     x: 0,
     transition: {
-      duration: 0.2,
+      duration: 0.1,
       ease: "easeInOut",
       type: "spring",
       stiffness: 200,
-      damping: 15,
+      damping: 30,
       staggerChildren: 0.3,
-      when: "beforeChildren",
+      // when: "beforeChildren",
     },
   },
 };
@@ -492,13 +498,13 @@ const parentVarientRight = {
     opacity: 1,
     x: 0,
     transition: {
-      duration: 0.2,
+      duration: 0.1,
       ease: "easeInOut",
       type: "spring",
       stiffness: 200,
-      damping: 15,
+      damping: 30,
       staggerChildren: 0.3,
-      when: "beforeChildren",
+      // when: "beforeChildren",
     },
   },
 };
@@ -508,7 +514,7 @@ const childVarient = {
     opacity: [0, 0.5, 1],
     y: 0,
     transition: {
-      duration: 0.5,
+      duration: 0.2,
     },
   },
 };

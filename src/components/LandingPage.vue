@@ -481,19 +481,25 @@
               }}
             </span>
           </motion.p>
-          <motion.p
-            v-if="selectedFAQ === idx"
-            :initial="{ opacity: 0, height: 0, y: -20 }"
-            :animate="{ opacity: 1, height: 'auto', y: 0 }"
-            :exit="{ opacity: 0, height: 0, y: -20 }"
-            :transition="{ duration: 0.4, delay: idx * 0.1 }"
-            class="text-zinc-muted mt-2"
-            :class="selectedFAQ === idx ? 'p-4 px-8' : 'p-0 text-base'"
+          <motion.div
+            :animate="{
+              height: selectedFAQ === idx ? 'auto' : 0,
+            }"
+            :initial="{ height: 0 }"
+            :transition="{ duration: 0.35 }"
+            style="overflow: hidden"
+            class="faq-answer-wrapper"
           >
-            A: {{ item.answer }}
-          </motion.p>
-
-          <!-- <p class="text-zinc-muted">A: {{ item.answer }}</p> -->
+            <motion.p
+              v-if="selectedFAQ === idx"
+              :initial="{ opacity: 0 }"
+              :animate="{ opacity: 1 }"
+              :transition="{ delay: 0.35, duration: 0.25 }"
+              class="text-zinc-muted p-4 px-8"
+            >
+              A: {{ item.answer }}
+            </motion.p>
+          </motion.div>
         </div>
         <div class="relative">
           <motion.div
@@ -560,16 +566,25 @@
             }}
           </span>
         </motion.p>
-        <motion.p
-          v-if="selectedFAQ === item.question"
-          :initial="{ opacity: 0, height: 0, y: -20 }"
-          :animate="{ opacity: 1, height: 'auto', y: 0 }"
-          :exit="{ opacity: 0, height: 0, y: -20 }"
-          :transition="{ duration: 0.4 }"
-          class="text-zinc-muted mt-2 p-4 px-8"
+        <motion.div
+          :animate="{
+            height: selectedFAQ === item.question ? 'auto' : 0,
+          }"
+          :initial="{ height: 0 }"
+          :transition="{ duration: 0.35 }"
+          style="overflow: hidden"
+          class="faq-answer-wrapper"
         >
-          A: {{ item.answer }}
-        </motion.p>
+          <motion.p
+            v-if="selectedFAQ === item.question"
+            :initial="{ opacity: 0 }"
+            :animate="{ opacity: 1 }"
+            :transition="{ delay: 0.35, duration: 0.25 }"
+            class="text-zinc-muted p-4 px-8"
+          >
+            A: {{ item.answer }}
+          </motion.p>
+        </motion.div>
       </div>
     </div>
   </section>

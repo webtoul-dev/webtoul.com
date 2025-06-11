@@ -1,211 +1,114 @@
 <template>
   <section
-    class="flex flex-col items-center justify-center h-screen py-12 space-y-8 bg-section-white"
+    class="relative flex flex-col items-center justify-center h-screen py-12 space-y-8 bg-section-white"
   >
-    <!-- Hero Section -->
-    <h1
-      class="text-7xl font-extrabold text-blue-highlight mb-4 flex items-baseline gap-2"
-    >
-      <span class="material-icons align-middle">auto_awesome</span>
-      AI Website Builder<br />
-      for Everyone
-    </h1>
-    <p class="text-lg md:text-xl max-w-2xl text-elegant mb-6">
-      Instantly create, customize, and launch beautiful websites with AI. No
-      coding, no hassle—just your vision, brought to life.
-    </p>
-    <router-link to="/editor">
-      <motion.div
-        class="bg-gradient-to-r from-blue-highlight to-blue-600 text-section-white px-8 py-3 rounded-full text-lg font-semibold shadow hover:from-blue-500 hover:to-blue-700 flex items-center gap-2 relative group"
-        :initial="{ scale: 1 }"
-        :animate="
-          rocketHover
-            ? { scale: 1.04, boxShadow: '0 8px 32px 0 #60a5fa55' }
-            : { scale: 1, boxShadow: '0 0 0 0 #60a5fa00' }
-        "
-        :transition="{ type: 'spring', stiffness: 300, damping: 22, mass: 1.2 }"
-        @mouseenter="rocketHover = true"
-        @mouseleave="rocketHover = false"
-        style="isolation: isolate"
+    <div class="absolute w-full h-screen">
+      <span
+        v-for="(icon, index) in icons"
+        :key="index"
+        class="material-symbols absolute text-blue-highlight"
+        :style="iconStyles[index]"
       >
-        <span class="relative flex items-center justify-center w-8 h-8 mr-1">
-          <motion.span
-            class="material-icons align-middle text-xl"
-            :initial="{ y: 0, rotate: 0, color: '#fff', scale: 1 }"
-            :animate="
-              rocketHover
-                ? { y: -35, rotate: -45, color: '#2164ee', scale: 1.18 }
-                : { y: 0, rotate: 0, color: '#fff', scale: 1 }
-            "
-            :transition="{ type: 'spring', stiffness: 400, damping: 18 }"
-            style="display: inline-block; will-change: transform; z-index: 2"
-            >rocket_launch</motion.span
-          >
-          <motion.span
-            v-if="rocketHover"
-            class="absolute left-1/2 top-1/2 pointer-events-none select-none"
-            :initial="{ opacity: 0, scaleY: 0.5, y: 8 }"
-            :animate="{ opacity: 0.5, scaleY: 1, y: 12 }"
-            :exit="{ opacity: 0, scaleY: 0.5, y: 8 }"
-            :transition="{ duration: 0.4 }"
-            style="
-              width: 18px;
-              height: 12px;
-              border-radius: 50%;
-              background: radial-gradient(
-                ellipse at center,
-                #bae6fd 60%,
-                transparent 100%
-              );
-              filter: blur(2px);
-              z-index: 1;
-              left: 50%;
-              top: 80%;
-              transform: translate(-50%, 0);
-            "
-          ></motion.span>
-        </span>
-        <span class="relative z-10">Try the Builder</span>
-      </motion.div>
-    </router-link>
-    <motion.img
-      src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=800&q=80"
-      alt="AI Website Builder"
-      class="w-auto max-h-96 rounded-lg shadow-lg mt-6"
-      :initial="{ opacity: 0, y: 20 }"
-      :animate="{ opacity: 1, y: 0 }"
-      :transition="{ duration: 0.6, delay: 0.2 }"
-    />
-  </section>
-  <section
-    class="mx-auto my-20 p-8 flex flex-col md:flex-row items-scratch gap-12 bg-section-white"
-  >
-    <!-- About Section -->
-    <div
-      class="flex flex-col space-y-4 justify-center border p-12 rounded-lg cursor-default hover:shadow-lg transition-shadow duration-300 text-left bg-gradient-to-l hover:shadow-blue-highlight from-blue-50 to-blue-200"
-    >
-      <h2 class="text-3xl font-bold text-blue-highlight mb-2">About Webtoul</h2>
-      <p class="text-elegant mb-2 font-extralight max-w-lg">
-        Webtoul is your AI-powered partner for building beautiful, responsive
-        websites in minutes. Whether you’re a business owner, freelancer, or
-        creative, our platform empowers you to bring your ideas to life—no
-        coding required.
-      </p>
+        {{ icon }}
+      </span>
     </div>
-    <div class="flex flex-col justify-around items-start gap-12">
-      <div
-        class="flex flex-col items-start border hover:shadow-lg hover:shadow-blue-highlight transition-shadow duration-300 rounded-lg p-8 bg-gradient-to-tr from-blue-50 to-blue-200 w-full"
+    <div
+      class="relative flex flex-col items-center justify-center w-full h-full"
+    >
+      <!-- Hero Section -->
+
+      <h1
+        class="text-7xl font-extrabold text-blue-highlight mb-4 flex items-baseline gap-2"
       >
-        <h3
-          class="font-semibold select-none cursor-default text-2xl py-4 text-blue-highlight mb-1 flex items-center gap-1"
+        <span class="material-symbols align-middle">auto_awesome</span>
+        AI Website Builder<br />
+        for Everyone
+      </h1>
+      <p class="text-lg md:text-xl max-w-2xl text-elegant mb-6">
+        Instantly create, customize, and launch beautiful websites with AI. No
+        coding, no hassle—just your vision, brought to life.
+      </p>
+      <router-link to="/editor">
+        <motion.div
+          class="bg-gradient-to-r from-blue-highlight to-blue-600 text-section-white px-8 py-3 rounded-full text-lg font-semibold shadow hover:from-blue-500 hover:to-blue-700 flex items-center gap-2 relative group"
+          :initial="{ scale: 1 }"
+          :animate="
+            rocketHover
+              ? { scale: 1.04, boxShadow: '0 8px 32px 0 #60a5fa55' }
+              : { scale: 1, boxShadow: '0 0 0 0 #60a5fa00' }
+          "
+          :transition="{
+            type: 'spring',
+            stiffness: 300,
+            damping: 22,
+            mass: 1.2,
+          }"
+          @mouseenter="rocketHover = true"
+          @mouseleave="rocketHover = false"
+          style="isolation: isolate"
         >
-          Contact
-        </h3>
-        <div class="flex flex-col gap-4 w-full">
-          <motion.div
-            v-for="(item, idx) in contactItems"
-            :key="item.label"
-            class="relative group cursor-pointer"
-            :initial="{ scale: 1, boxShadow: '0 0 0 0 #60a5fa00' }"
-            :animate="
-              hoveredIndex === idx
-                ? { scale: 1.04, boxShadow: '0 4px 24px 0 #60a5fa33' }
-                : { scale: 1, boxShadow: '0 0 0 0 #60a5fa00' }
-            "
-            :transition="{ type: 'spring', stiffness: 300, damping: 25 }"
-            @mouseenter="hoveredIndex = idx"
-            @mouseleave="hoveredIndex = null"
-            style="overflow: hidden"
-          >
-            <!-- Border Animation -->
+          <span class="relative flex items-center justify-center w-8 h-8 mr-1">
             <motion.span
-              class="absolute inset-0 pointer-events-none border-2 border-blue-highlight rounded-lg"
-              :initial="{ scaleX: 0, scaleY: 0, opacity: 0 }"
+              class="material-symbols align-middle text-xl"
+              :initial="{ y: 0, rotate: 0, color: '#fff', scale: 1 }"
               :animate="
-                hoveredIndex === idx
-                  ? { scaleX: 1, scaleY: 1, opacity: 1 }
-                  : { scaleX: 0, scaleY: 0, opacity: 0 }
+                rocketHover
+                  ? { y: -35, rotate: -45, color: '#2164ee', scale: 1.18 }
+                  : { y: 0, rotate: 0, color: '#fff', scale: 1 }
               "
+              :transition="{ type: 'spring', stiffness: 100, damping: 50 }"
+              style="display: inline-block; will-change: transform; z-index: 2"
+              >rocket_launch</motion.span
+            >
+            <motion.span
+              v-if="rocketHover"
+              class="absolute left-1/2 top-1/2 pointer-events-none select-none"
+              :initial="{ opacity: 0, scaleY: 0.5, y: 8 }"
+              :animate="{ opacity: 0.5, scaleY: 1, y: 12 }"
+              :exit="{ opacity: 0, scaleY: 0.5, y: 8 }"
               :transition="{ duration: 0.4 }"
               style="
-                transform-origin: center center;
+                width: 18px;
+                height: 12px;
+                border-radius: 50%;
+                background: radial-gradient(
+                  ellipse at center,
+                  #bae6fd 60%,
+                  transparent 100%
+                );
+                filter: blur(2px);
                 z-index: 1;
-                display: block;
+                left: 50%;
+                top: 80%;
+                transform: translate(-50%, 0);
               "
             ></motion.span>
-            <!-- Gradient BG Animation -->
-            <motion.span
-              class="absolute inset-0 z-0 rounded-lg"
-              :initial="{ x: '-20%', opacity: 0.7 }"
-              :animate="
-                hoveredIndex === idx
-                  ? { x: '0%', opacity: 1 }
-                  : { x: '-20%', opacity: 0.7 }
-              "
-              :transition="{ duration: 0.6 }"
-              :style="{
-                background:
-                  hoveredIndex === idx
-                    ? 'linear-gradient(90deg, #e0e7ff 0%, #bae6fd 100%)'
-                    : 'linear-gradient(90deg, #fff 0%, #cfefef 100%)',
-                zIndex: 0,
-                display: 'block',
-              }"
-            ></motion.span>
-            <a :href="item.link">
-              <p
-                class="relative z-10 text-zinc-muted text-sm flex items-center gap-2 px-6 py-4 font-medium"
-                :class="
-                  hoveredIndex === idx
-                    ? 'font-semibold text-blue-highlight'
-                    : ''
-                "
-              >
-                <span class="material-icons text-base align-middle">{{
-                  item.icon
-                }}</span>
-                <span>{{ item.label }}: {{ item.value }}</span>
-              </p>
-            </a>
-          </motion.div>
-        </div>
-      </div>
-      <div
-        class="flex flex-col border hover:shadow-lg hover:shadow-blue-highlight transition-shadow duration-300 rounded-lg p-8 bg-gradient-to-br from-blue-50 to-blue-200"
-      >
-        <h3
-          class="font-semibold select-none cursor-default text-blue-highlight mb-1 flex items-center gap-1 text-2xl py-4"
-        >
-          <span class="material-icons text-base align-middle">article</span>
-          Latest Blog
-        </h3>
-        <div
-          v-for="blog in blogs.slice(0, 1)"
-          :key="blog.id"
-          class="text-left flex flex-col space-y-2"
-        >
-          <p class="font-bold">{{ blog.title }}</p>
-          <p class="text-zinc-muted text-xs">{{ blog.date }}</p>
-          <p class="text-elegant text-sm">
-            {{ blog.summary.slice(0, 100) }}...<router-link
-              to="/blog"
-              class="text-blue-800 hover:underline"
-              >Read More</router-link
-            >
-          </p>
-        </div>
-      </div>
+          </span>
+          <span class="relative z-10">Try the Builder</span>
+        </motion.div>
+      </router-link>
+      <motion.img
+        src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=800&q=80"
+        alt="AI Website Builder"
+        class="w-auto max-h-96 rounded-lg shadow-lg mt-6"
+        :initial="{ opacity: 0, y: 20 }"
+        :animate="{ opacity: 1, y: 0 }"
+        :transition="{ duration: 0.6, delay: 0.2 }"
+      />
     </div>
   </section>
+
   <!-- Partners Section -->
   <section class="bg-section-white my-40 p-8 flex flex-col items-center">
     <h2
       class="text-5xl font-semibold text-blue-highlight mb-6 flex items-center gap-2 pb-10"
     >
-      <span class="material-icons text-4xl align-middle">handshake</span>
+      <span class="material-symbols text-4xl align-middle">handshake</span>
       Our Partners
     </h2>
-    <div class="flex flex-wrap justify-around items-center w-full">
+    <div
+      class="flex flex-wrap justify-around overflow-X-hidden items-center w-full"
+    >
       <a
         v-for="p in partners"
         :key="p.name"
@@ -218,7 +121,7 @@
         <img :src="p.logo" :alt="p.name" class="h-12 mb-2" />
         <!-- add a popover when hovering metnioning the company name -->
         <motion.div
-          class="absolute -top-14 left-0 right-0 mx-auto bg-white text-blue-highlight text-sm font-thin px-4 py-2 rounded-lg shadow w-fit"
+          class="absolute -top-14 left-0 right-0 mx-auto bg-white text-blue-highlight text-sm font-thin px-4 py-2 shadow w-fit"
           :initial="{ opacity: 0, y: 10 }"
           :animate="
             hoveredIndex === partners.indexOf(p)
@@ -236,7 +139,7 @@
   <!-- Pricing Section -->
   <section class="bg-section-white my-20 p-8 flex flex-col items-left">
     <h2
-      class="text-4xl font-bold text-blue-highlight mb-6 flex items-start gap-2"
+      class="text-4xl font-bold text-blue-highlight mb-6 flex flex-col items-center gap-2"
     >
       Pricing
     </h2>
@@ -244,22 +147,43 @@
       Choose the plan that fits your needs. Start for free or upgrade to Pro for
       advanced features and persistent sites.
     </p>
-    <div class="flex flex-wrap justify-center gap-8">
+    <div class="flex flex-wrap justify-center items-center gap-0">
       <div
         v-for="plan in pricing"
         :key="plan.name"
-        class="border-2 bg-zinc-muted border-blue-highlight py-16 text-zinc-muted rounded-xl shadow-md hover:shadow-lg hover:shadow-blue-highlight transition-shadow duration-300 shadow-blue-highlight p-12 max-w-72 flex flex-col justify-around items-center"
+        class="border-1 border-blue-highlight text-zinc-muted shadow max-w-96 shadow-blue-highlight p-12 flex flex-col justify-around items-center"
+        :class="
+          pricing.indexOf(plan) === 1
+            ? 'bg-blue-highlight py-20 w-[400px] text-white'
+            : 'py-16'
+        "
       >
         <h3 class="font-bold text-blue-highlight text-2xl">
           {{ plan.name }}
         </h3>
-        <div class="text-xl font-extrabold my-2 text-text-elegant">
+        <div
+          class="text-xl font-extrabold my-2"
+          :class="pricing.indexOf(plan) === 1 ? 'text-white line-through' : ''"
+        >
           {{ plan.price }}
         </div>
-        <ul class="text-white text-left mb-4 flex flex-col gap-2 py-4">
+        <div
+          :v-if="pricing.indexOf(plan) === 1"
+          class="text-4xl font-extrabold text-white flex flex-col items-center justify-center"
+        >
+          $8.99
+          <span class="text-sm"> For the first month </span>
+        </div>
+        <ul
+          class="text-left mb-4 flex flex-col gap-2 py-4"
+          :class="
+            pricing.indexOf(plan) === 1 ? 'text-white' : 'text-zinc-muted'
+          "
+        >
           <li v-for="f in plan.features" :key="f">
             <span
-              class="material-icons text-base align-middle text-blue-highlight"
+              class="material-symbols text-base align-middle text-blue-highlight"
+              :class="pricing.indexOf(plan) === 1 ? 'text-white' : ''"
             >
               check_circle_outline
             </span>
@@ -267,17 +191,15 @@
           </li>
         </ul>
         <motion.button
-          class="w-full text-center bg-blue-highlight text-section-white px-6 py-3 font-semibold hover:bg-blue-600"
-          :initial="{
-            scale: 1,
-            borderRadius: '9999px',
-            y: 0,
-          }"
+          class="w-full text-center px-6 py-3 font-semibold hover:bg-blue-600"
+          :class="
+            pricing.indexOf(plan) === 1
+              ? 'bg-section-white text-blue-highlight hover:text-section-white'
+              : 'bg-blue-highlight text-section-white'
+          "
           :animate="{
-            scale: hoveredIndex === pricing.indexOf(plan) ? 1.05 : 1,
+            scale: hoveredIndex === pricing.indexOf(plan) ? 1 : 1.05,
             y: hoveredIndex === pricing.indexOf(plan) ? -5 : 0,
-            borderRadius:
-              hoveredIndex === pricing.indexOf(plan) ? '15px' : '9999px',
           }"
           :transition="{ type: 'spring', stiffness: 400, damping: 20 }"
           @mouseenter="hoveredIndex = pricing.indexOf(plan)"
@@ -340,24 +262,171 @@
       </div>
     </div>
   </section>
-  <!-- CTA Section -->
+
   <section
-    class="bg-slate-dark p-12 py-28 rounded-3xl my-20 mx-16 flex flex-col items-center text-center"
+    class="mx-auto my-20 p-8 grid grid-cols-1 md:grid-cols-2 gap-12 bg-section-white"
   >
-    <h2
-      class="text-5xl font-bold text-section-white mb-2 flex items-baseline gap-2"
+    <!-- About Section -->
+    <div
+      class="flex flex-col space-y-4 justify-center p-12 cursor-default shadow-md text-left bg-gradient-to-bl shadow-blue-highlight from-blue-50 to-blue-200"
     >
-      <span class="material-icons text-4xl align-middle">rocket_launch</span>
-      Ready to build your AI-powered website?
-    </h2>
-    <p class="text-blue-highlight mb-4">
-      Start for free or explore our Pro features for even more power.
-    </p>
-    <router-link
-      to="/editor"
-      class="inline-block bg-section-white text-blue-highlight px-8 py-3 rounded-full text-lg font-semibold shadow hover:bg-blue-50 transition"
-      >Get Started</router-link
-    >
+      <h2 class="text-3xl font-bold text-blue-highlight mb-2">About Webtoul</h2>
+      <p class="text-elegant mb-2 font-extralight max-w-lg">
+        Webtoul is your AI-powered partner for building beautiful, responsive
+        websites in minutes. Whether you’re a business owner, freelancer, or
+        creative, our platform empowers you to bring your ideas to life—no
+        coding required.
+      </p>
+    </div>
+    <div class="flex flex-col justify-around items-start gap-12">
+      <div
+        class="flex flex-col items-start shadow-md shadow-blue-highlight p-8 bg-gradient-to-tr from-blue-50 to-blue-200 w-full"
+      >
+        <h3
+          class="font-semibold select-none cursor-default text-2xl py-4 text-blue-highlight mb-1 flex items-center gap-1"
+        >
+          Contact
+        </h3>
+        <div class="flex flex-col gap-4 w-full">
+          <iframe> </iframe>
+          <motion.div
+            v-for="(item, idx) in contactItems"
+            :key="item.label"
+            class="relative group cursor-pointer"
+            :initial="{ scale: 1, boxShadow: '0 0 0 0 #60a5fa00' }"
+            :animate="
+              hoveredIndex === idx
+                ? { scale: 1.04, boxShadow: '0 4px 24px 0 #60a5fa33' }
+                : { scale: 1, boxShadow: '0 0 0 0 #60a5fa00' }
+            "
+            :transition="{ type: 'spring', stiffness: 300, damping: 25 }"
+            @mouseenter="hoveredIndex = idx"
+            @mouseleave="hoveredIndex = null"
+            style="overflow: hidden"
+          >
+            <!-- Border Animation -->
+            <motion.span
+              class="absolute inset-0 pointer-events-none border-2 border-blue-highlight rounded-lg"
+              :initial="{ scaleX: 0, scaleY: 0, opacity: 0 }"
+              :animate="
+                hoveredIndex === idx
+                  ? { scaleX: 1, scaleY: 1, opacity: 1 }
+                  : { scaleX: 0, scaleY: 0, opacity: 0 }
+              "
+              :transition="{ duration: 0.4 }"
+              style="
+                transform-origin: center center;
+                z-index: 1;
+                display: block;
+              "
+            ></motion.span>
+            <!-- Gradient BG Animation -->
+            <motion.span
+              class="absolute inset-0 z-0 rounded-lg"
+              :initial="{ x: '-20%', opacity: 0.7 }"
+              :animate="
+                hoveredIndex === idx
+                  ? { x: '0%', opacity: 1 }
+                  : { x: '-20%', opacity: 0.7 }
+              "
+              :transition="{ duration: 0.6 }"
+              :style="{
+                background:
+                  hoveredIndex === idx
+                    ? 'linear-gradient(90deg, #e0e7ff 0%, #bae6fd 100%)'
+                    : 'linear-gradient(90deg, #fff 0%, #cfefef 100%)',
+                zIndex: 0,
+                display: 'block',
+              }"
+            ></motion.span>
+            <a :href="item.link">
+              <p
+                class="relative z-10 text-zinc-muted text-sm flex items-center gap-2 px-6 py-4 font-medium"
+                :class="
+                  hoveredIndex === idx
+                    ? 'font-semibold text-blue-highlight'
+                    : ''
+                "
+              >
+                <span class="material-symbols text-base align-middle">{{
+                  item.icon
+                }}</span>
+                <span>{{ item.label }}: {{ item.value }}</span>
+              </p>
+            </a>
+          </motion.div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="pt-20 pt-40">
+    <div class="flex flex-col items-center gap-8 p-8">
+      <h3
+        class="font-semibold select-none cursor-default text-blue-highlight mb-1 flex items-center gap-1 text-2xl py-4"
+      >
+        Latest Blogs
+      </h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div
+          v-for="blog in blogs"
+          :key="blog.id"
+          class="relative text-left flex flex-col space-y-2 rounded-lg bg-blue-900 text-white"
+          @mouseenter="hoveredBlog = blog.id"
+          @mouseleave="hoveredBlog = null"
+        >
+          <div
+            class="absolute -top-60 left-0 right-0 mx-auto rounded-lg w-60 h-72 bg-white"
+          >
+            <img :src="blog.graphic" :alt="blog.title" class="object-cover" />
+          </div>
+          <div class="p-12 pt-20">
+            <p class="font-bold">{{ blog.title }}</p>
+            <p class="text-zinc-muted text-xs">{{ blog.date }}</p>
+            <p class="text-elegant text-sm">
+              {{ blog.content.slice(0, 100) }}...
+            </p>
+            <motion.div
+              :animate="{
+                opacity: hoveredBlog === blog.id ? 1 : 0,
+                y: hoveredBlog === blog.id ? 0 : 50,
+                scale: hoveredBlog === blog.id ? 1 : 0.9,
+              }"
+              :transition="{
+                duration: 0.3,
+                ease: 'easeInOut',
+                type: 'spring',
+                stiffness: 100,
+                damping: 20,
+              }"
+              class="absolute bottom-1 left-1 right-1 mx-auto rounded-b-md h-20 bg-white flex flex-fol items-center justify-center"
+            >
+              <router-link
+                to="/blog"
+                class="relative text-blue-800"
+                @mouseenter="blogLink = blog.id"
+                @mouseleave="blogLink = null"
+              >
+                Read More
+                <motion.div
+                  :animate="{
+                    scale: blogLink === hoveredBlog ? 1 : 0,
+                  }"
+                  :transition="{
+                    duration: 0.2,
+                    ease: 'easeInOut',
+                    type: 'spring',
+                    stiffness: 500,
+                    damping: 50,
+                  }"
+                  class="absolute w-full h-[1px] bg-blue-800 bottom-0"
+                  :style="{ transformOrigin: 'left' }"
+                ></motion.div>
+              </router-link>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
   <!-- FAQ Section (optional, can be moved elsewhere) -->
   <section
@@ -379,7 +448,7 @@
       <h3
         class="text-3xl font-semibold text-blue-highlight mb-4 flex items-baseline gap-2"
       >
-        <span class="material-icons text-xl align-middle">help_outline</span>
+        <span class="material-symbols text-xl align-middle">help_outline</span>
         Frequently Asked Questions
       </h3>
       <div class="flex flex-col gap-4">
@@ -392,8 +461,9 @@
           <motion.p
             class="font-bold text-blue-highlight p-3 flex flex-row items-center w-full justify-between cursor-pointer"
             :initial="{ opacity: 0, y: 20 }"
-            :animate="{ opacity: 1, y: 0 }"
+            :whileInView="{ opacity: 1, y: 0 }"
             :transition="{ duration: 0.4, delay: idx * 0.1 }"
+            :inViewOptions="{ once: true }"
             @click="
               if (selectedFAQ === idx) selectedFAQ = null;
               else selectedFAQ = idx;
@@ -403,7 +473,7 @@
             "
           >
             Q: {{ item.question }}
-            <span class="material-icons text-xl">
+            <span class="material-symbols text-xl">
               {{
                 selectedFAQ === idx
                   ? "keyboard_arrow_up"
@@ -482,7 +552,7 @@
           "
         >
           Q: {{ item.question }}
-          <span class="material-icons text-xl">
+          <span class="material-symbols text-xl">
             {{
               selectedFAQ === item.question
                 ? "keyboard_arrow_up"
@@ -503,10 +573,29 @@
       </div>
     </div>
   </section>
+  <!-- CTA Section -->
+  <section
+    class="bg-slate-dark p-12 py-28 rounded-3xl my-20 mx-16 flex flex-col items-center text-center"
+  >
+    <h2
+      class="text-5xl font-bold text-section-white mb-2 flex items-baseline gap-2"
+    >
+      <span class="material-symbols text-4xl align-middle">rocket_launch</span>
+      Ready to build your AI-powered website?
+    </h2>
+    <p class="text-blue-highlight mb-4">
+      Start for free or explore our Pro features for even more power.
+    </p>
+    <router-link
+      to="/editor"
+      class="inline-block bg-section-white text-blue-highlight px-8 py-3 rounded-full text-lg font-semibold shadow hover:bg-blue-50 transition"
+      >Get Started</router-link
+    >
+  </section>
   <!-- Note Section -->
   <section class="bg-section-white">
     <p class="text-zinc-muted text-base flex items-center gap-2">
-      <span class="material-icons text-base align-middle">info</span>
+      <span class="material-symbols text-base align-middle">info</span>
       Note: Customizations are session-based and not saved after you leave. For
       persistent sites, stay tuned for future updates!
     </p>
@@ -518,7 +607,7 @@ import testimonials from "../data/testimonials";
 import blogs from "../data/blogs";
 import faq from "../data/faq";
 import contact from "../data/contact";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import router from "../router";
 import { motion } from "motion-v";
 
@@ -537,6 +626,16 @@ const partners = [
     name: "Azure",
     logo: "https://upload.wikimedia.org/wikipedia/commons/a/a8/Microsoft_Azure_Logo.svg",
     url: "https://azure.microsoft.com",
+  },
+  {
+    name: "Netlify",
+    logo: "https://www.netlify.com/img/global/favicon/favicon-512.png",
+    url: "https://www.netlify.com",
+  },
+  {
+    name: "Cloudflare",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/7/76/Cloudflare_Logo.png",
+    url: "https://www.cloudflare.com",
   },
 ];
 
@@ -600,6 +699,32 @@ const hoveredSection = ref(null);
 const selectedIndex = ref(0);
 const showAllFaq = ref(false);
 const selectedFAQ = ref(0);
+const hoveredBlog = ref(null);
+const blogLink = ref(null);
+
+const icons = ref([
+  "pan_tool_alt",
+  "touch_app",
+  "arrow_selector_tool",
+  "left_click",
+  "code",
+  "scan",
+  "terminal",
+]);
+
+const iconStyles = ref([]);
+
+const generateRandomStyles = () => {
+  iconStyles.value = icons.value.map(() => ({
+    left: `${Math.random() * 80 + 10}%`, // Random X position
+    top: `${Math.random() * 80 + 10}%`, // Random Y position
+    fontSize: `${Math.random() * 2 + 1}rem`, // Random size
+  }));
+};
+
+onMounted(() => {
+  generateRandomStyles();
+});
 </script>
 
 <style scoped>

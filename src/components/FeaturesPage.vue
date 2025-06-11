@@ -5,7 +5,7 @@
     <motion.img
       :initial="{ opacity: 0, x: -50 }"
       :whileInView="{ opacity: 1, x: 0 }"
-      :viewport="{ once: true }"
+      :inViewOptions="{ once: true }"
       :transition="{
         duration: 0.2,
         ease: 'easeInOut',
@@ -20,7 +20,7 @@
     <motion.img
       :initial="{ opacity: 0, x: 50 }"
       :whileInView="{ opacity: 1, x: 0 }"
-      :viewport="{ once: true }"
+      :inViewOptions="{ once: true }"
       :transition="{
         duration: 0.2,
         ease: 'easeInOut',
@@ -94,7 +94,7 @@
           >
             <li class="flex items-start gap-2">
               <span
-                class="material-icons min-w-8 min-h-8 rounded flex items-center justify-center"
+                class="material-symbols min-w-8 min-h-8 rounded flex items-center justify-center"
                 :class="
                   hoveredSection === 'Feature_1'
                     ? 'bg-blue-50 text-blue-highlight'
@@ -106,7 +106,7 @@
             </li>
             <li class="flex items-start gap-2">
               <span
-                class="material-icons min-w-8 min-h-8 rounded flex items-center justify-center"
+                class="material-symbols min-w-8 min-h-8 rounded flex items-center justify-center"
                 :class="
                   hoveredSection === 'Feature_1'
                     ? 'bg-blue-50 text-blue-highlight'
@@ -118,7 +118,7 @@
             </li>
             <li class="flex items-start gap-2">
               <span
-                class="material-icons min-w-8 min-h-8 rounded flex items-center justify-center"
+                class="material-symbols min-w-8 min-h-8 rounded flex items-center justify-center"
                 :class="
                   hoveredSection === 'Feature_1'
                     ? 'bg-blue-50 text-blue-highlight'
@@ -130,7 +130,7 @@
             </li>
             <li class="flex items-start gap-2">
               <span
-                class="material-icons min-w-8 min-h-8 rounded flex items-center justify-center"
+                class="material-symbols min-w-8 min-h-8 rounded flex items-center justify-center"
                 :class="
                   hoveredSection === 'Feature_1'
                     ? 'bg-blue-50 text-blue-highlight'
@@ -211,16 +211,17 @@
           business and audience.
         </p>
         <ul class="text-section-white mb-2">
-          <li><span class="material-icons">start</span> writer’s block</li>
+          <li><span class="material-symbols">start</span> writer’s block</li>
           <li>
-            <span class="material-icons">start</span> Save hours on copywriting
+            <span class="material-symbols">start</span> Save hours on
+            copywriting
           </li>
           <li>
-            <span class="material-icons">start</span> SEO-friendly,
+            <span class="material-symbols">start</span> SEO-friendly,
             conversion-focused content
           </li>
           <li>
-            <span class="material-icons">start</span> Consistent, professional
+            <span class="material-symbols">start</span> Consistent, professional
             tone
           </li>
         </ul>
@@ -275,21 +276,21 @@
         <ul class="text-section-white grid grid-cols-2 gap-x-2 gap-y-4 my-2">
           <li class="flex items-start gap-4">
             <span
-              class="material-icons min-w-8 min-h-8 rounded flex items-center justify-center bg-blue-highlight text-section-white"
+              class="material-symbols min-w-8 min-h-8 rounded flex items-center justify-center bg-blue-highlight text-section-white"
             >
               check_circle_outline </span
             >Achieve a professional look effortlessly
           </li>
           <li class="flex items-start gap-4">
             <span
-              class="material-icons min-w-8 min-h-8 rounded flex items-center justify-center bg-blue-highlight text-section-white"
+              class="material-symbols min-w-8 min-h-8 rounded flex items-center justify-center bg-blue-highlight text-section-white"
             >
               check_circle_outline </span
             >Brand consistency, every time
           </li>
           <li class="flex items-start gap-4">
             <span
-              class="material-icons min-w-8 min-h-8 rounded flex items-center justify-center bg-blue-highlight text-section-white"
+              class="material-symbols min-w-8 min-h-8 rounded flex items-center justify-center bg-blue-highlight text-section-white"
             >
               check_circle_outline </span
             >Visually engaging, user-friendly interfaces
@@ -379,17 +380,17 @@
         </p>
         <ul class="text-section-white mb-2 flex flex-col gap-2">
           <li class="flex items-start gap-4">
-            <span class="material-icons text-blue-highlight">
+            <span class="material-symbols text-blue-highlight">
               check_circle_outline </span
             >Smooth, lag-free editing
           </li>
           <li class="flex items-start gap-4">
-            <span class="material-icons text-blue-highlight">
+            <span class="material-symbols text-blue-highlight">
               check_circle_outline </span
             >Instant feedback and previews
           </li>
           <li class="flex items-start gap-4">
-            <span class="material-icons text-blue-highlight">
+            <span class="material-symbols text-blue-highlight">
               check_circle_outline </span
             >Enjoyable, modern building process
           </li>

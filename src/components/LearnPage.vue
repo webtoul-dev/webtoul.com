@@ -72,7 +72,7 @@
             hoveredCard === card.id ? 'text-white' : 'text-blue-highlight'
           "
         >
-          <span class="material-icons text-base align-middle">{{
+          <span class="material-symbols text-base align-middle">{{
             card.icon
           }}</span>
           {{ card.title_card }}

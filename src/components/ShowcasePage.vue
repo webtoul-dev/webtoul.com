@@ -36,7 +36,7 @@
             repeatType: 'reverse',
           }"
           :whileHover="{ scale: 1.2 }"
-          class="material-icons text-4xl"
+          class="material-symbols text-4xl"
           >arrow_downward</motion.span
         >
       </a>
@@ -87,7 +87,8 @@
             }"
             style="transform-origin: center center"
           />
-          <motion.span class="material-icons text-3xl text-blue-highlight mb-2"
+          <motion.span
+            class="material-symbols text-3xl text-blue-highlight mb-2"
             >brush</motion.span
           >
           <motion.h2
@@ -154,7 +155,8 @@
             }"
             style="transform-origin: center center"
           />
-          <motion.span class="material-icons text-3xl text-blue-highlight mb-2"
+          <motion.span
+            class="material-symbols text-3xl text-blue-highlight mb-2"
             >storefront</motion.span
           >
           <motion.h2
@@ -215,7 +217,8 @@
             }"
             style="transform-origin: center center"
           />
-          <motion.span class="material-icons text-3xl text-blue-highlight mb-2"
+          <motion.span
+            class="material-symbols text-3xl text-blue-highlight mb-2"
             >rss_feed</motion.span
           >
           <motion.h2
@@ -277,7 +280,8 @@
             }"
             style="transform-origin: center center"
           />
-          <motion.span class="material-icons text-3xl text-blue-highlight mb-2"
+          <motion.span
+            class="material-symbols text-3xl text-blue-highlight mb-2"
             >shopping_bag</motion.span
           >
           <motion.h2
@@ -329,7 +333,7 @@
     @mouseleave="hoveredBox = null"
   >
     <div class="flex flex-row items-center justify-center gap-4 w-full">
-      <img src="/favicon.svg" class="w-12 h-12"  />
+      <img src="/favicon.svg" class="w-12 h-12" />
       <h2 class="text-3xl font-bold text-blue-highlight mb-2 text-nowrap">
         Your Vision, Our AI
       </h2>

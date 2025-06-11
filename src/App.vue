@@ -24,7 +24,7 @@
         >
           <span
             v-if="item.icon"
-            class="material-icons text-base align-middle"
+            class="material-symbols text-base align-middle"
             >{{ item.icon }}</span
           >
           {{ item.label }}

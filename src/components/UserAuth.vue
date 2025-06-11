@@ -62,11 +62,26 @@
 
 <script setup>
 import { ref } from "vue";
+import {
+  signInWithEmailLink,
+  signInWithPopup,
+  GoogleAuthProvider,
+  sendSignInLinkToEmail,
+} from "firebase/auth";
+import { auth } from "../firebase";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const email = ref("");
 const loading = ref(false);
 const message = ref("");
 const error = ref("");
+
+const actionCodeSettings = {
+  url: window.location.origin + "/authEmail",
+  handleCodeInApp: true,
+};
 
 const handleEmailLogin = async () => {
   loading.value = true;
@@ -74,11 +89,13 @@ const handleEmailLogin = async () => {
   message.value = "";
   try {
     // TODO: Replace with your backend/email magic link logic
-    await new Promise((resolve) => setTimeout(resolve, 1200));
-    message.value = "A magic login link has been sent to your email.";
+    await sendSignInLinkToEmail(auth, email.value, actionCodeSettings).then(
+      (message.value = "A magic login link has been sent to your email.")
+    );
     email.value = "";
   } catch (e) {
     error.value = "Failed to send magic link. Please try again.";
+    console.error(e);
   } finally {
     loading.value = false;
   }
@@ -88,12 +105,16 @@ const handleGoogleLogin = async () => {
   loading.value = true;
   error.value = "";
   message.value = "";
+
   try {
     // TODO: Replace with your Google OAuth logic
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await signInWithPopup(auth, new GoogleAuthProvider()).then((result) => {
+      router.push("/editor");
+    });
     message.value = "Google login successful (demo).";
   } catch (e) {
     error.value = "Google login failed. Please try again.";
+    console.error(e);
   } finally {
     loading.value = false;
   }

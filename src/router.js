@@ -11,6 +11,8 @@ import UserAuth from "./components/UserAuth.vue";
 import AccountSettings from "./components/AccountSettings.vue";
 import GuidePage from "./components/GuidePage.vue";
 import BlogPage from "./components/BlogPage.vue";
+import AuthCallback from "./components/AuthCallback.vue";
+import { auth } from "./firebase";
 
 const routes = [
   { path: "/", name: "Home", component: LandingPage },
@@ -30,6 +32,7 @@ const routes = [
     props: true,
   },
   { path: "/blog", name: "Blog", component: BlogPage },
+  { path: "/authEmail", component: AuthCallback },
 ];
 
 const router = createRouter({
@@ -38,6 +41,14 @@ const router = createRouter({
   scrollBehavior(to, from, savedPosition) {
     return { top: 0 };
   },
+});
+// router guard
+router.beforeEach((to, _, next) => {
+  if (to.path.startsWith("/editor") && !auth.currentUser) {
+    next("/auth");
+  } else {
+    next();
+  }
 });
 
 export default router;

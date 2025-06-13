@@ -1,36 +1,40 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useUserStore } from '../../stores/builder'
-import { useBuilderStore } from '../../stores/builder'
-import { EyeIcon, EyeSlashIcon, ClipboardIcon } from '@heroicons/vue/24/outline'
+import { ref } from "vue";
+import { useUserStore } from "../../stores/builder";
+import { useBuilderStore } from "../../stores/builder";
+import {
+  EyeIcon,
+  EyeSlashIcon,
+  ClipboardIcon,
+} from "@heroicons/vue/24/outline";
 
-const userStore = useUserStore()
-const builderStore = useBuilderStore()
+const userStore = useUserStore();
+const builderStore = useBuilderStore();
 
-const showApiKey = ref(false)
-const newWebhookUrl = ref('')
+const showApiKey = ref(false);
+const newWebhookUrl = ref("");
 
 const copyToClipboard = (text: string) => {
-  navigator.clipboard.writeText(text)
-  builderStore.showToast('Copied to clipboard', 'success')
-}
+  navigator.clipboard.writeText(text);
+  builderStore.showToast("Copied to clipboard", "success");
+};
 
 const regenerateApiKey = () => {
   // Mock API key regeneration
-  const newKey = 'wt_' + Math.random().toString(36).substring(2, 18)
-  userStore.updateProfile({ apiKey: newKey })
-  builderStore.showToast('API key regenerated successfully', 'success')
-}
+  const newKey = "wt_" + Math.random().toString(36).substring(2, 18);
+  userStore.updateUserProfile({ apiKey: newKey });
+  builderStore.showToast("API key regenerated successfully", "success");
+};
 
 const addWebhook = () => {
   if (!newWebhookUrl.value.trim()) {
-    builderStore.showToast('Please enter a webhook URL', 'error')
-    return
+    builderStore.showToast("Please enter a webhook URL", "error");
+    return;
   }
-  
-  builderStore.showToast('Webhook endpoint added', 'success')
-  newWebhookUrl.value = ''
-}
+
+  builderStore.showToast("Webhook endpoint added", "success");
+  newWebhookUrl.value = "";
+};
 </script>
 
 <template>
@@ -56,7 +60,11 @@ const addWebhook = () => {
           <div class="flex-1">
             <div class="relative">
               <input
-                :value="showApiKey ? userStore.user.apiKey : '•'.repeat(userStore.user.apiKey.length)"
+                :value="
+                  showApiKey
+                    ? userStore.user.apiKey
+                    : '•'.repeat(userStore.user.apiKey.length)
+                "
                 type="text"
                 readonly
                 class="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-lg font-mono text-sm"
@@ -71,7 +79,7 @@ const addWebhook = () => {
               </button>
             </div>
           </div>
-          
+
           <button
             type="button"
             class="px-3 py-2 text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
@@ -79,7 +87,7 @@ const addWebhook = () => {
           >
             <ClipboardIcon class="h-4 w-4" />
           </button>
-          
+
           <button
             type="button"
             class="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
@@ -129,17 +137,20 @@ const addWebhook = () => {
     <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
       <div class="flex items-start space-x-3">
         <div class="flex-shrink-0">
-          <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+          <div
+            class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center"
+          >
             <span class="text-blue-600 text-sm font-medium">?</span>
           </div>
         </div>
         <div>
           <h4 class="text-base font-medium text-blue-900">API Documentation</h4>
           <p class="text-sm text-blue-700 mt-1">
-            Learn how to integrate Webtoul into your applications with our comprehensive API docs.
+            Learn how to integrate Webtoul into your applications with our
+            comprehensive API docs.
           </p>
-          <a 
-            href="#" 
+          <a
+            href="#"
             class="inline-flex items-center mt-2 text-sm font-medium text-blue-600 hover:text-blue-700"
           >
             View Documentation →

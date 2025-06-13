@@ -14,10 +14,12 @@ import BlogPage from "./components/BlogPage.vue";
 import AuthCallback from "./components/AuthCallback.vue";
 import { auth } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
-import DashboardLayout from "../layouts/DashboardLayout.vue";
-import Dashboard from "../views/Dashboard.vue";
-import Builder from "../views/Builder.vue";
-import Settings from "../views/Settings.vue";
+import DashboardLayout from "./layouts/DashboardLayout.vue";
+import Dashboard from "./views/Dashboard.vue";
+import Builder from "./views/Builder.vue";
+import Settings from "./views/Settings.vue";
+import UIComponents from "./views/UIComponents.vue";
+import ImageGenerator from "./views/ImageGenerator.vue";
 
 const routes = [
   { path: "/", name: "Home", component: LandingPage },
@@ -25,7 +27,6 @@ const routes = [
   { path: "/showcase", name: "Showcase", component: ShowcasePage },
   { path: "/learn", name: "Learn", component: LearnPage },
   { path: "/about", name: "About", component: AboutPage },
-  { path: "/editor", name: "Editor", component: WebsiteEditor },
   { path: "/templates", name: "Templates", component: TemplatesGallery },
   { path: "/pricing", name: "Pricing", component: Pricing },
   { path: "/auth", name: "Sign In", component: UserAuth },
@@ -51,6 +52,16 @@ const routes = [
         path: "builder",
         name: "builder",
         component: Builder,
+      },
+      {
+        path: "ui-components",
+        name: "ui-components",
+        component: UIComponents,
+      },
+      {
+        path: "image-generator",
+        name: "image-generator",
+        component: ImageGenerator,
       },
       {
         path: "settings",

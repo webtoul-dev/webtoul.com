@@ -1,6 +1,7 @@
 <template>
   <div class="min-h-screen w-full flex flex-col">
     <header
+      v-if="!hideLayout"
       :class="[
         'sticky top-0 z-10 shadow flex items-center justify-between px-8 py-5 transition-colors duration-300',
         scrolled ? 'bg-white' : 'bg-transparent',
@@ -55,6 +56,7 @@
       <router-view />
     </main>
     <footer
+      v-if="!hideLayout"
       class="bg-white text-slate-500 text-center py-6 text-base border-t border-slate-200 mt-auto"
     >
       <span
@@ -83,9 +85,11 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted, computed } from "vue";
+import { useRoute } from "vue-router";
 import { auth } from "./firebase";
 import { signOut, onAuthStateChanged } from "firebase/auth";
+
 const navItems = [
   { key: "landing", label: "Home", to: "/" },
   { key: "features", label: "Features", to: "/features", icon: "star" },
@@ -96,6 +100,13 @@ const navItems = [
 ];
 const scrolled = ref(false);
 const user = ref(null);
+const route = useRoute();
+
+const hideLayout = computed(() => {
+  // Hide layout for /dashboard and all its children
+  return route.path.startsWith("/dashboard");
+});
+
 const onScroll = () => {
   scrolled.value = window.scrollY > 10;
 };
@@ -118,17 +129,3 @@ const logout = async () => {
   }
 };
 </script>
-
-<style>
-.material-icons {
-  font-family: "Material Icons";
-  font-weight: normal;
-  font-style: normal;
-  line-height: 1;
-  text-transform: none;
-  margin: 0;
-  padding: 0;
-  vertical-align: middle;
-  -webkit-font-smoothing: antialiased;
-}
-</style>

@@ -1,74 +1,81 @@
-import { defineStore } from 'pinia'
-import { ref, reactive } from 'vue'
+import { defineStore } from "pinia";
+import { ref, reactive } from "vue";
+import {
+  getAuth,
+  onAuthStateChanged,
+  updateEmail,
+  updateProfile,
+  updatePassword,
+} from "firebase/auth";
 
 export interface BuildHistory {
-  id: string
-  prompt: string
-  theme: string
-  framework: string
-  createdAt: Date
-  preview?: string
+  id: string;
+  prompt: string;
+  theme: string;
+  framework: string;
+  createdAt: Date;
+  preview?: string;
 }
 
 export interface GeneratedWebsite {
-  html: string
-  css: string
-  components: string[]
-  images: string[]
+  html: string;
+  css: string;
+  components: string[];
+  images: string[];
 }
 
-export const useBuilderStore = defineStore('builder', () => {
+export const useBuilderStore = defineStore("builder", () => {
   // State
-  const isLoading = ref(false)
-  const prompt = ref('')
-  const selectedTheme = ref('modern')
-  const selectedFramework = ref('tailwind')
-  const generatedWebsite = ref<GeneratedWebsite | null>(null)
-  const buildHistory = ref<BuildHistory[]>([])
-  const showCustomization = ref(false)
-  
+  const isLoading = ref(false);
+  const prompt = ref("");
+  const selectedTheme = ref("modern");
+  const selectedFramework = ref("tailwind");
+  const generatedWebsite = ref<GeneratedWebsite | null>(null);
+  const buildHistory = ref<BuildHistory[]>([]);
+  const showCustomization = ref(false);
+
   // Toast notifications
   const toast = reactive({
     show: false,
-    message: '',
-    type: 'success' as 'success' | 'error' | 'info'
-  })
+    message: "",
+    type: "success" as "success" | "error" | "info",
+  });
 
   // Customization settings
   const customization = reactive({
     colors: {
-      primary: '#3b82f6',
-      secondary: '#64748b',
-      accent: '#f59e0b',
-      background: '#ffffff',
-      text: '#1f2937'
+      primary: "#3b82f6",
+      secondary: "#64748b",
+      accent: "#f59e0b",
+      background: "#ffffff",
+      text: "#1f2937",
     },
     layout: {
       showHero: true,
       showFeatures: true,
       showPricing: true,
-      showContact: true
+      showContact: true,
     },
     content: {
-      title: '',
-      subtitle: '',
-      description: ''
-    }
-  })
+      title: "",
+      subtitle: "",
+      description: "",
+    },
+  });
 
   // Actions
   const generateWebsite = async () => {
     if (!prompt.value.trim()) {
-      showToast('Please enter a prompt', 'error')
-      return
+      showToast("Please enter a prompt", "error");
+      return;
     }
 
-    isLoading.value = true
-    
+    isLoading.value = true;
+
     try {
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000))
-      
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
       // Mock generated website data
       const mockWebsite: GeneratedWebsite = {
         html: `
@@ -89,13 +96,15 @@ export const useBuilderStore = defineStore('builder', () => {
             </main>
           </div>
         `,
-        css: '',
-        components: ['Header', 'Hero', 'Features'],
-        images: ['https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg']
-      }
-      
-      generatedWebsite.value = mockWebsite
-      
+        css: "",
+        components: ["Header", "Hero", "Features"],
+        images: [
+          "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg",
+        ],
+      };
+
+      generatedWebsite.value = mockWebsite;
+
       // Add to history
       const historyItem: BuildHistory = {
         id: Date.now().toString(),
@@ -103,45 +112,47 @@ export const useBuilderStore = defineStore('builder', () => {
         theme: selectedTheme.value,
         framework: selectedFramework.value,
         createdAt: new Date(),
-        preview: mockWebsite.html
-      }
-      
-      buildHistory.value.unshift(historyItem)
-      showToast('Website generated successfully!', 'success')
-      showCustomization.value = true
-      
+        preview: mockWebsite.html,
+      };
+
+      buildHistory.value.unshift(historyItem);
+      showToast("Website generated successfully!", "success");
+      showCustomization.value = true;
     } catch (error) {
-      showToast('Failed to generate website', 'error')
+      showToast("Failed to generate website", "error");
     } finally {
-      isLoading.value = false
+      isLoading.value = false;
     }
-  }
+  };
 
   const exportWebsite = () => {
     if (!generatedWebsite.value) {
-      showToast('No website to export', 'error')
-      return
+      showToast("No website to export", "error");
+      return;
     }
-    
-    // Mock export functionality
-    showToast('Export started - download will begin shortly', 'info')
-  }
 
-  const showToast = (message: string, type: 'success' | 'error' | 'info' = 'success') => {
-    toast.message = message
-    toast.type = type
-    toast.show = true
-    
+    // Mock export functionality
+    showToast("Export started - download will begin shortly", "info");
+  };
+
+  const showToast = (
+    message: string,
+    type: "success" | "error" | "info" = "success"
+  ) => {
+    toast.message = message;
+    toast.type = type;
+    toast.show = true;
+
     setTimeout(() => {
-      toast.show = false
-    }, 3000)
-  }
+      toast.show = false;
+    }, 3000);
+  };
 
   const resetBuilder = () => {
-    prompt.value = ''
-    generatedWebsite.value = null
-    showCustomization.value = false
-  }
+    prompt.value = "";
+    generatedWebsite.value = null;
+    showCustomization.value = false;
+  };
 
   return {
     // State
@@ -154,41 +165,112 @@ export const useBuilderStore = defineStore('builder', () => {
     showCustomization,
     toast,
     customization,
-    
+
     // Actions
     generateWebsite,
     exportWebsite,
     showToast,
-    resetBuilder
-  }
-})
+    resetBuilder,
+  };
+});
 
-export const useUserStore = defineStore('user', () => {
+export const useUserStore = defineStore("user", () => {
   const user = reactive({
-    name: 'John Doe',
-    email: 'john@example.com',
-    plan: 'Pro',
-    apiKey: 'wt_1234567890abcdef'
-  })
+    name: "John Doe",
+    email: "john@example.com",
+    plan: "Free",
+    apiKey: "wt_1234567890abcdef",
+    photoURL: "/user.webp",
+    uid: "",
+  });
 
   const settings = reactive({
     betaFeatures: false,
     notifications: true,
-    autoSave: true
-  })
+    autoSave: true,
+  });
 
-  const updateProfile = (data: Partial<typeof user>) => {
-    Object.assign(user, data)
-  }
+  const syncWithFirebaseAuth = () => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (firebaseUser) => {
+      if (firebaseUser) {
+        user.name = firebaseUser.displayName || "";
+        user.email = firebaseUser.email || "";
+        user.photoURL = firebaseUser.photoURL || "";
+        user.uid = firebaseUser.uid;
+      } else {
+        user.name = "";
+        user.email = "";
+        user.photoURL = "";
+        user.uid = "wt_1234567890abcdef";
+        user.plan = "Free";
+        user.apiKey = "";
+      }
+    });
+  };
+
+  // Update both Firebase and store
+  const updateUserProfile = async (data: {
+    name?: string;
+    email?: string;
+    photoURL?: string;
+    apiKey?: string;
+    plan?: string;
+  }) => {
+    const auth = getAuth();
+    const currentUser = auth.currentUser;
+    data.apiKey ? (user.apiKey = data.apiKey) : "";
+    data.plan ? (user.plan = data.plan) : "";
+    if (!currentUser) throw new Error("No authenticated user");
+
+    // Update displayName and photoURL in Firebase
+    if (data.name || data.photoURL) {
+      await updateProfile(currentUser, {
+        displayName: data.name ?? currentUser.displayName ?? "",
+        photoURL: data.photoURL ?? currentUser.photoURL ?? "",
+      });
+      user.name = data.name ?? user.name;
+      user.photoURL = data.photoURL ?? user.photoURL;
+    }
+    // Update email in Firebase
+    if (data.email && data.email !== currentUser.email) {
+      await updateEmail(currentUser, data.email);
+      user.email = data.email;
+    }
+  };
+
+  const updateUserPassword = async (data: { newPassword: string }) => {
+    const auth = getAuth();
+    const currentUser = auth.currentUser;
+    if (!currentUser) throw new Error("No authenticated user");
+    // Password validation: min 8 chars, at least one lowercase, one uppercase, one number
+    const password = data.newPassword;
+    const isValid =
+      password.length >= 8 &&
+      /[a-z]/.test(password) &&
+      /[A-Z]/.test(password) &&
+      /\d/.test(password);
+
+    if (!isValid) {
+      throw new Error(
+        "Password must be at least 8 characters and include lowercase, uppercase, and a number."
+      );
+    }
+
+    // Update password in Firebase
+    await updatePassword(currentUser, password);
+  };
 
   const updateSettings = (data: Partial<typeof settings>) => {
-    Object.assign(settings, data)
-  }
+    Object.assign(settings, data);
+  };
 
   return {
     user,
     settings,
-    updateProfile,
-    updateSettings
-  }
-})
+    updateSettings,
+    updateUserProfile,
+    syncWithFirebaseAuth,
+    updateUserPassword,
+  };
+});

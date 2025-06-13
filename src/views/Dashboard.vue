@@ -1,43 +1,75 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { RouterLink } from 'vue-router'
-import { useBuilderStore } from '../stores/builder'
-import { 
-  PlusIcon, 
-  EyeIcon, 
+import { computed } from "vue";
+import { RouterLink } from "vue-router";
+import { useBuilderStore } from "../stores/builder";
+import {
+  PlusIcon,
+  EyeIcon,
   ArrowDownTrayIcon,
-  ClockIcon
-} from '@heroicons/vue/24/outline'
+  ClockIcon,
+  Squares2X2Icon,
+  PhotoIcon,
+  WrenchScrewdriverIcon,
+} from "@heroicons/vue/24/outline";
 
-const builderStore = useBuilderStore()
+const builderStore = useBuilderStore();
 
 const stats = computed(() => [
-  { name: 'Total Builds', value: builderStore.buildHistory.length, change: '+12%' },
-  { name: 'This Month', value: builderStore.buildHistory.filter(build => {
-    const monthAgo = new Date()
-    monthAgo.setMonth(monthAgo.getMonth() - 1)
-    return build.createdAt > monthAgo
-  }).length, change: '+5%' },
-  { name: 'Frameworks Used', value: '3', change: '0%' },
-  { name: 'Success Rate', value: '98%', change: '+2%' },
-])
+  {
+    name: "Total Builds",
+    value: builderStore.buildHistory.length,
+    change: "+12%",
+    icon: WrenchScrewdriverIcon,
+  },
+  { name: "UI Components", value: "45", change: "+8%", icon: Squares2X2Icon },
+  { name: "AI Images", value: "128", change: "+15%", icon: PhotoIcon },
+  { name: "Success Rate", value: "98%", change: "+2%", icon: ClockIcon },
+]);
+
+const quickActions = [
+  {
+    name: "Create Website",
+    description: "Build a new website with AI",
+    href: "/dashboard/builder",
+    icon: WrenchScrewdriverIcon,
+    color: "bg-blue-500",
+  },
+  {
+    name: "Generate Components",
+    description: "Create custom UI components",
+    href: "/dashboard/ui-components",
+    icon: Squares2X2Icon,
+    color: "bg-purple-500",
+  },
+  {
+    name: "Generate Images",
+    description: "Create AI-powered images",
+    href: "/dashboard/image-generator",
+    icon: PhotoIcon,
+    color: "bg-green-500",
+  },
+];
 
 const formatDate = (date: Date) => {
-  return new Intl.DateTimeFormat('en-US', {
-    month: 'short',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit'
-  }).format(date)
-}
+  return new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  }).format(date);
+};
 </script>
 
 <template>
   <div class="space-y-8">
     <!-- Welcome Section -->
-    <div class="bg-gradient-to-r from-primary-500 to-primary-700 rounded-lg p-6 text-white">
+    <div
+      class="bg-gradient-to-r from-primary-500 to-primary-700 rounded-lg p-6 text-white"
+    >
       <h2 class="text-2xl font-bold mb-2">Welcome back, John!</h2>
-      <p class="text-primary-100 mb-4">Ready to build something amazing with AI?</p>
+      <p class="text-primary-100 mb-4">
+        Ready to build something amazing with AI?
+      </p>
       <RouterLink
         to="/dashboard/builder"
         class="inline-flex items-center px-4 py-2 bg-white text-primary-700 rounded-lg font-medium hover:bg-primary-50 transition-colors"
@@ -59,8 +91,39 @@ const formatDate = (date: Date) => {
             <p class="text-sm font-medium text-gray-600">{{ stat.name }}</p>
             <p class="text-2xl font-bold text-gray-900">{{ stat.value }}</p>
           </div>
-          <div class="text-sm text-green-600 font-medium">{{ stat.change }}</div>
+          <div class="flex flex-col items-end">
+            <component :is="stat.icon" class="h-8 w-8 text-gray-400 mb-1" />
+            <div class="text-sm text-green-600 font-medium">
+              {{ stat.change }}
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+      <h3 class="text-lg font-medium text-gray-900 mb-4">Quick Actions</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <RouterLink
+          v-for="action in quickActions"
+          :key="action.name"
+          :to="action.href"
+          class="flex items-center p-4 border border-gray-200 rounded-lg hover:border-primary-300 hover:shadow-md transition-all group"
+        >
+          <div
+            class="flex items-center justify-center w-12 h-12 rounded-lg mr-4"
+            :class="action.color"
+          >
+            <component :is="action.icon" class="h-6 w-6 text-white" />
+          </div>
+          <div>
+            <h4 class="font-medium text-gray-900 group-hover:text-primary-600">
+              {{ action.name }}
+            </h4>
+            <p class="text-sm text-gray-500">{{ action.description }}</p>
+          </div>
+        </RouterLink>
       </div>
     </div>
 
@@ -78,8 +141,13 @@ const formatDate = (date: Date) => {
         </div>
       </div>
 
-      <div v-if="builderStore.buildHistory.length === 0" class="p-6 text-center">
-        <div class="w-12 h-12 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-4">
+      <div
+        v-if="builderStore.buildHistory.length === 0"
+        class="p-6 text-center"
+      >
+        <div
+          class="w-12 h-12 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-4"
+        >
           <ClockIcon class="h-6 w-6 text-gray-400" />
         </div>
         <p class="text-gray-500 mb-4">No builds yet</p>
@@ -103,7 +171,9 @@ const formatDate = (date: Date) => {
               <h4 class="text-sm font-medium text-gray-900 truncate">
                 {{ build.prompt }}
               </h4>
-              <div class="mt-1 flex items-center space-x-4 text-sm text-gray-500">
+              <div
+                class="mt-1 flex items-center space-x-4 text-sm text-gray-500"
+              >
                 <span>{{ build.framework }}</span>
                 <span>{{ build.theme }} theme</span>
                 <span>{{ formatDate(build.createdAt) }}</span>

@@ -13,6 +13,11 @@ import GuidePage from "./components/GuidePage.vue";
 import BlogPage from "./components/BlogPage.vue";
 import AuthCallback from "./components/AuthCallback.vue";
 import { auth } from "./firebase";
+import { onAuthStateChanged } from "firebase/auth";
+import DashboardLayout from "../layouts/DashboardLayout.vue";
+import Dashboard from "../views/Dashboard.vue";
+import Builder from "../views/Builder.vue";
+import Settings from "../views/Settings.vue";
 
 const routes = [
   { path: "/", name: "Home", component: LandingPage },
@@ -33,6 +38,27 @@ const routes = [
   },
   { path: "/blog", name: "Blog", component: BlogPage },
   { path: "/authEmail", component: AuthCallback },
+  {
+    path: "/dashboard",
+    component: DashboardLayout,
+    children: [
+      {
+        path: "",
+        name: "dashboard",
+        component: Dashboard,
+      },
+      {
+        path: "builder",
+        name: "builder",
+        component: Builder,
+      },
+      {
+        path: "settings",
+        name: "settings",
+        component: Settings,
+      },
+    ],
+  },
 ];
 
 const router = createRouter({
@@ -43,9 +69,16 @@ const router = createRouter({
   },
 });
 // router guard
-router.beforeEach((to, _, next) => {
-  if (to.path.startsWith("/editor") && !auth.currentUser) {
-    next("/auth");
+router.beforeEach(async (to, _, next) => {
+  if (to.path.startsWith("/editor")) {
+    if (auth.currentUser) {
+      next();
+    } else {
+      onAuthStateChanged(auth, (u) => {
+        if (u) next();
+        else next("/auth");
+      });
+    }
   } else {
     next();
   }

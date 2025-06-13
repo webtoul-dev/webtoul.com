@@ -32,10 +32,18 @@
       </nav>
       <div class="flex items-center gap-4">
         <router-link
+          v-if="!user"
           to="/auth"
           class="px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition"
           >Sign In</router-link
         >
+        <button
+          v-else
+          @click="logout"
+          class="px-4 py-2 bg-red-600 text-white rounded-full hover:bg-red-700 transition"
+        >
+          Sign Out
+        </button>
         <router-link
           to="/editor"
           class="px-4 py-2 bg-indigo-500 text-white rounded-full hover:bg-indigo-600 transition"
@@ -76,6 +84,8 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
+import { auth } from "./firebase";
+import { signOut, onAuthStateChanged } from "firebase/auth";
 const navItems = [
   { key: "landing", label: "Home", to: "/" },
   { key: "features", label: "Features", to: "/features", icon: "star" },
@@ -85,15 +95,28 @@ const navItems = [
   { key: "blog", label: "Blog", to: "/blog", icon: "article" },
 ];
 const scrolled = ref(false);
+const user = ref(null);
 const onScroll = () => {
   scrolled.value = window.scrollY > 10;
 };
 onMounted(() => {
   window.addEventListener("scroll", onScroll);
+  onAuthStateChanged(auth, (u) => {
+    user.value = u;
+  });
 });
 onUnmounted(() => {
   window.removeEventListener("scroll", onScroll);
 });
+
+const logout = async () => {
+  try {
+    await signOut(auth);
+    window.location.href = "/";
+  } catch (error) {
+    console.error("Error logging out:", error);
+  }
+};
 </script>
 
 <style>

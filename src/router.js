@@ -4,7 +4,6 @@ import FeaturesPage from "./components/FeaturesPage.vue";
 import ShowcasePage from "./components/ShowcasePage.vue";
 import LearnPage from "./components/LearnPage.vue";
 import AboutPage from "./components/AboutPage.vue";
-import WebsiteEditor from "./components/WebsiteEditor.vue";
 import TemplatesGallery from "./components/TemplatesGallery.vue";
 import Pricing from "./components/Pricing.vue";
 import UserAuth from "./components/UserAuth.vue";
@@ -40,7 +39,7 @@ const routes = [
   { path: "/blog", name: "Blog", component: BlogPage },
   { path: "/authEmail", component: AuthCallback },
   {
-    path: "/dashboard",
+    path: "/editor",
     component: DashboardLayout,
     children: [
       {

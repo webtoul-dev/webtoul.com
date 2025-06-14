@@ -18,7 +18,7 @@
       <!-- Hero Section -->
 
       <h1
-        class="text-7xl font-extrabold text-blue-highlight mb-4 flex items-baseline gap-2"
+        class="text-5xl md:text-7xl font-extrabold text-blue-highlight mb-4 flex items-baseline gap-2"
       >
         <span class="material-symbols align-middle">auto_awesome</span>
         AI Website Builder<br />
@@ -99,15 +99,17 @@
   </section>
 
   <!-- Partners Section -->
-  <section class="bg-section-white my-40 p-8 flex flex-col items-center">
+  <section class="bg-section-white md:my-40 p-8 flex flex-col items-center">
     <h2
-      class="text-5xl font-semibold text-blue-highlight mb-6 flex items-center gap-2 pb-10"
+      class="text-3xl md:text-5xl font-semibold text-blue-highlight mb-6 flex items-center gap-2 pb-10"
     >
-      <span class="material-symbols text-4xl align-middle">handshake</span>
+      <span class="material-symbols text-2xl md:text-4xl align-middle"
+        >handshake</span
+      >
       Our Partners
     </h2>
     <div
-      class="flex flex-wrap justify-around overflow-X-hidden items-center w-full"
+      class="flex flex-wrap justify-around gap-8 overflow-X-hidden items-center w-full"
     >
       <a
         v-for="p in partners"
@@ -137,7 +139,7 @@
     </div>
   </section>
   <!-- Pricing Section -->
-  <section class="bg-section-white my-20 p-8 flex flex-col items-left">
+  <section class="bg-section-white my-10 md:my-20 p-8 flex flex-col items-left">
     <h2
       class="text-4xl font-bold text-blue-highlight mb-6 flex flex-col items-center gap-2"
     >
@@ -158,7 +160,10 @@
             : 'py-16'
         "
       >
-        <h3 class="font-bold text-blue-highlight text-2xl">
+        <h3
+          class="font-bold text-blue-highlight text-2xl"
+          :class="pricing.indexOf(plan) === 1 ? 'text-white' : ''"
+        >
           {{ plan.name }}
         </h3>
         <div
@@ -168,10 +173,10 @@
           {{ plan.price }}
         </div>
         <div
-          :v-if="pricing.indexOf(plan) === 1"
+          v-if="pricing.indexOf(plan) === 1"
           class="text-4xl font-extrabold text-white flex flex-col items-center justify-center"
         >
-          $8.99
+          $15.99
           <span class="text-sm"> For the first month </span>
         </div>
         <ul
@@ -190,23 +195,25 @@
             {{ f }}
           </li>
         </ul>
-        <motion.button
-          class="w-full text-center px-6 py-3 font-semibold hover:bg-blue-600"
-          :class="
-            pricing.indexOf(plan) === 1
-              ? 'bg-section-white text-blue-highlight hover:text-section-white'
-              : 'bg-blue-highlight text-section-white'
-          "
-          :animate="{
-            scale: hoveredIndex === pricing.indexOf(plan) ? 1 : 1.05,
-            y: hoveredIndex === pricing.indexOf(plan) ? -5 : 0,
-          }"
-          :transition="{ type: 'spring', stiffness: 400, damping: 20 }"
-          @mouseenter="hoveredIndex = pricing.indexOf(plan)"
-          @mouseleave="hoveredIndex = null"
-        >
-          Choose
-        </motion.button>
+        <router-link to="/editor/billing">
+          <motion.button
+            class="w-full text-center px-6 py-3 font-semibold hover:bg-blue-600"
+            :class="
+              pricing.indexOf(plan) === 1
+                ? 'bg-section-white text-blue-highlight hover:text-section-white'
+                : 'bg-blue-highlight text-section-white'
+            "
+            :animate="{
+              scale: hoveredIndex === pricing.indexOf(plan) ? 1 : 1.05,
+              y: hoveredIndex === pricing.indexOf(plan) ? -5 : 0,
+            }"
+            :transition="{ type: 'spring', stiffness: 400, damping: 20 }"
+            @mouseenter="hoveredIndex = pricing.indexOf(plan)"
+            @mouseleave="hoveredIndex = null"
+          >
+            Choose
+          </motion.button>
+        </router-link>
       </div>
     </div>
   </section>
@@ -264,7 +271,7 @@
   </section>
 
   <section
-    class="mx-auto my-20 p-8 grid grid-cols-1 md:grid-cols-2 gap-12 bg-section-white"
+    class="mx-auto py-10 md:my-20 p-8 grid grid-cols-1 md:grid-cols-2 gap-12 bg-section-white"
   >
     <!-- About Section -->
     <div
@@ -359,14 +366,14 @@
       </div>
     </div>
   </section>
-  <section class="pt-20 pt-40">
+  <section class="pt-10 md:pt-40">
     <div class="flex flex-col items-center gap-8 p-8">
       <h3
         class="font-semibold select-none cursor-default text-blue-highlight mb-1 flex items-center gap-1 text-2xl py-4"
       >
         Latest Blogs
       </h3>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <div class="grid mt-64 grid-cols-1 md:grid-cols-3 gap-64 md:gap-12">
         <div
           v-for="blog in blogs"
           :key="blog.id"
@@ -659,29 +666,44 @@ const pricing = [
     name: "Free",
     price: "$0",
     features: [
-      "Basic AI builder",
-      "Community templates",
-      "Session-based sites",
+      "5 websites per month",
+      "10 UI components per month",
+      "20 AI images per month",
+      "Basic templates",
+      "Email support",
+      "Community access",
     ],
   },
   {
     name: "Pro",
-    price: "$19/mo",
+    price: "$29/mo",
     features: [
-      "Custom domains",
-      "Persistent sites",
+      "Unlimited websites",
+      "Unlimited UI components",
+      "500 AI images per month",
       "Premium templates",
       "Priority support",
+      "Custom domains",
+      "Advanced customization",
+      "Export source code",
+      "HD image generation",
+      "Custom component styles",
     ],
   },
   {
     name: "Enterprise",
-    price: "Contact Us",
+    price: "$99/mo",
     features: [
-      "White-label",
+      "Everything in Pro",
+      "Unlimited AI images",
       "Team collaboration",
-      "Custom AI models",
+      "White-label solution",
       "Dedicated support",
+      "SLA guarantee",
+      "Custom integrations",
+      "Bulk image generation",
+      "Advanced UI component library",
+      "Custom brand templates",
     ],
   },
 ];

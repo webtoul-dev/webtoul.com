@@ -30,21 +30,21 @@ const quickActions = [
   {
     name: "Create Website",
     description: "Build a new website with AI",
-    href: "/dashboard/builder",
+    href: "/editor/builder",
     icon: WrenchScrewdriverIcon,
     color: "bg-blue-500",
   },
   {
     name: "Generate Components",
     description: "Create custom UI components",
-    href: "/dashboard/ui-components",
+    href: "/editor/ui-components",
     icon: Squares2X2Icon,
     color: "bg-purple-500",
   },
   {
     name: "Generate Images",
     description: "Create AI-powered images",
-    href: "/dashboard/image-generator",
+    href: "/editor/image-generator",
     icon: PhotoIcon,
     color: "bg-green-500",
   },
@@ -71,7 +71,7 @@ const formatDate = (date: Date) => {
         Ready to build something amazing with AI?
       </p>
       <RouterLink
-        to="/dashboard/builder"
+        to="/editor/builder"
         class="inline-flex items-center px-4 py-2 bg-white text-primary-700 rounded-lg font-medium hover:bg-primary-50 transition-colors"
       >
         <PlusIcon class="h-5 w-5 mr-2" />
@@ -133,7 +133,7 @@ const formatDate = (date: Date) => {
         <div class="flex items-center justify-between">
           <h3 class="text-lg font-medium text-gray-900">Recent Builds</h3>
           <RouterLink
-            to="/dashboard/builder"
+            to="/editor/builder"
             class="text-primary-600 hover:text-primary-700 text-sm font-medium"
           >
             View all
@@ -152,7 +152,7 @@ const formatDate = (date: Date) => {
         </div>
         <p class="text-gray-500 mb-4">No builds yet</p>
         <RouterLink
-          to="/dashboard/builder"
+          to="/editor/builder"
           class="inline-flex items-center px-4 py-2 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors"
         >
           <PlusIcon class="h-4 w-4 mr-2" />

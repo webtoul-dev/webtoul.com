@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import { RouterLink, useRoute } from "vue-router";
+import { RouterLink, useRoute, useRouter } from "vue-router";
 import { XMarkIcon } from "@heroicons/vue/24/outline";
-import { ref } from "vue";
-import { useUserStore } from "../stores/builder";
+
+import { useBuilderStore, useUserStore } from "../stores/builder";
 
 const userStore = useUserStore();
+const builderStore = useBuilderStore();
+const router = useRouter();
 
 interface NavigationItem {
   name: string;
@@ -26,6 +28,15 @@ const route = useRoute();
 const isActive = (href: string) => {
   return route.path === href;
 };
+const userLogout = async () => {
+  try {
+    await userStore.logout();
+    builderStore.showToast("Logged out successfully!", "success");
+    router.push("/");
+  } catch (e) {
+    builderStore.showToast("Error logging out!", "error");
+  }
+};
 </script>
 
 <template>
@@ -38,12 +49,14 @@ const isActive = (href: string) => {
     <div
       class="flex h-16 items-center justify-between px-6 border-b border-gray-200"
     >
-      <div class="flex items-center space-x-3">
-        <div class="w-8 h-8 rounded-lg flex items-center justify-center">
-          <img src="/favicon.svg" />
+      <router-link to="/">
+        <div class="flex items-center space-x-3">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center">
+            <img src="/favicon.svg" />
+          </div>
+          <span class="text-xl font-bold text-gray-900">Webtoul</span>
         </div>
-        <span class="text-xl font-bold text-gray-900">Webtoul</span>
-      </div>
+      </router-link>
 
       <button
         type="button"
@@ -82,7 +95,15 @@ const isActive = (href: string) => {
           {{ item.name }}
         </RouterLink>
       </nav>
-
+      <!-- Sign out Button -->
+      <button
+        v-if="userStore"
+        type="button"
+        class="inline-flex items-center w-fit mx-auto mb-4 px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+        @click="userLogout"
+      >
+        Sign Out
+      </button>
       <!-- User info -->
       <div class="p-4 border-t border-gray-200">
         <div v-if="userStore" class="flex items-center space-x-3">

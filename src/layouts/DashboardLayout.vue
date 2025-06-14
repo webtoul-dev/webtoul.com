@@ -22,23 +22,23 @@ onMounted(() => {
 });
 
 const navigation = [
-  { name: "Dashboard", href: "/dashboard", icon: HomeIcon },
+  { name: "Dashboard", href: "/editor", icon: HomeIcon },
   {
     name: "Website Builder",
-    href: "/dashboard/builder",
+    href: "/editor/builder",
     icon: WrenchScrewdriverIcon,
   },
   {
     name: "UI Components",
-    href: "/dashboard/ui-components",
+    href: "/editor/ui-components",
     icon: Squares2X2Icon,
   },
   {
     name: "Image Generator",
-    href: "/dashboard/image-generator",
+    href: "/editor/image-generator",
     icon: PhotoIcon,
   },
-  { name: "Settings", href: "/dashboard/settings", icon: Cog6ToothIcon },
+  { name: "Settings", href: "/editor/settings", icon: Cog6ToothIcon },
 ];
 
 const closeSidebar = () => {
@@ -48,7 +48,7 @@ const closeSidebar = () => {
 const getPageTitle = () => {
   const routeName = route.name as string;
   switch (routeName) {
-    case "dashboard":
+    case "editor":
       return "Dashboard";
     case "builder":
       return "Website Builder";

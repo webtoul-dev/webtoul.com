@@ -6,6 +6,7 @@ import {
   updateEmail,
   updateProfile,
   updatePassword,
+  signOut,
 } from "firebase/auth";
 
 export interface BuildHistory {
@@ -264,6 +265,14 @@ export const useUserStore = defineStore("user", () => {
   const updateSettings = (data: Partial<typeof settings>) => {
     Object.assign(settings, data);
   };
+  const logout = async () => {
+    try {
+      const auth = getAuth();
+      await signOut(auth);
+    } catch (error) {
+      console.error("Error logging out:", error);
+    }
+  };
 
   return {
     user,
@@ -272,5 +281,6 @@ export const useUserStore = defineStore("user", () => {
     updateUserProfile,
     syncWithFirebaseAuth,
     updateUserPassword,
+    logout,
   };
 });

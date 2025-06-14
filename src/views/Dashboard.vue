@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { RouterLink } from "vue-router";
-import { useBuilderStore } from "../stores/builder";
+import { useBuilderStore, useUserStore } from "../stores/builder";
 import {
   PlusIcon,
   EyeIcon,
@@ -13,7 +13,7 @@ import {
 } from "@heroicons/vue/24/outline";
 
 const builderStore = useBuilderStore();
-
+const userStore = useUserStore();
 const stats = computed(() => [
   {
     name: "Total Builds",
@@ -66,7 +66,9 @@ const formatDate = (date: Date) => {
     <div
       class="bg-gradient-to-r from-primary-500 to-primary-700 rounded-lg p-6 text-white"
     >
-      <h2 class="text-2xl font-bold mb-2">Welcome back, John!</h2>
+      <h2 class="text-2xl font-bold mb-2">
+        Welcome back, {{ userStore.user.name || "Guest" }}!
+      </h2>
       <p class="text-primary-100 mb-4">
         Ready to build something amazing with AI?
       </p>

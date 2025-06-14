@@ -15,7 +15,22 @@
       }"
       src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=800&q=80"
       alt="AI Website Builder"
-      class="absolute left-0 w-1/2 h-full rounded-l-lg object-cover"
+      class="md:hidden absolute left-0 w-full h-full rounded-l-lg object-cover"
+    />
+    <motion.img
+      :initial="{ opacity: 0, x: -50 }"
+      :whileInView="{ opacity: 1, x: 0 }"
+      :inViewOptions="{ once: true }"
+      :transition="{
+        duration: 0.2,
+        ease: 'easeInOut',
+        type: 'spring',
+        stiffness: 100,
+        damping: 20,
+      }"
+      src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=800&q=80"
+      alt="AI Website Builder"
+      class="hidden md:block absolute left-0 w-1/2 h-full rounded-l-lg object-cover"
     />
     <motion.img
       :initial="{ opacity: 0, x: 50 }"
@@ -30,7 +45,7 @@
       }"
       src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=800&q=80"
       alt="AI Website Builder"
-      class="absolute right-0 w-1/2 h-full rounded-r-lg object-cover"
+      class="hidden md:block absolute right-0 w-1/2 h-full rounded-r-lg object-cover"
     />
     <div class="relative z-1 max-w-4xl">
       <h1 class="text-4xl font-extrabold text-blue-highlight mb-4">

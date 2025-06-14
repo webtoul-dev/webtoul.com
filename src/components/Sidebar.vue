@@ -31,10 +31,12 @@ const isActive = (href: string) => {
 const userLogout = async () => {
   try {
     await userStore.logout();
-    builderStore.showToast("Logged out successfully!", "success");
-    router.push("/");
+    builderStore.showToast("Sign out successfull!", "success");
+    setTimeout(() => {
+      router.push("/auth");
+    }, 1000);
   } catch (e) {
-    builderStore.showToast("Error logging out!", "error");
+    builderStore.showToast("Error signing out!", "error");
   }
 };
 </script>

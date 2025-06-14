@@ -8,7 +8,7 @@
       ]"
     >
       <mainNav :userData="user" v-if="wrapperWidth >= 805"></mainNav>
-      <mobileNav v-if="wrapperWidth < 805"></mobileNav>
+      <mobileNav :userData="user" v-if="wrapperWidth < 805"></mobileNav>
     </header>
     <main
       class="flex-1 px-2 max-w-[1800px] w-full mx-auto scroll-smooth overflow-x-clip"

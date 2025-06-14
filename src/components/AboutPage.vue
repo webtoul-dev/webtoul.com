@@ -1,6 +1,6 @@
 <template>
   <section
-    class="mx-auto p-12 py-0 pl-0 bg-gradient-to-r from-blue-50 to-blue-200 grid grid-cols-1 md:grid-cols-2 gap-10"
+    class="mx-auto bg-gradient-to-r from-blue-50 to-blue-200 grid grid-cols-1 md:grid-cols-2 gap-10"
   >
     <div class="relative flex flex-col items-center justify-center">
       <motion.img
@@ -95,7 +95,7 @@
         stiffness: 100,
         damping: 20,
       }"
-      class="flex flex-col items-start justify-center text-left gap-8"
+      class="flex flex-col items-start justify-center text-left gap-8 p-4"
     >
       <h1 class="text-3xl md:text-4xl font-extrabold text-blue-highlight mb-2">
         About Webtoul.com: Revolutionizing Web Creation with AI
@@ -105,9 +105,9 @@
       </p>
     </motion.div>
   </section>
-  <section>
+  <section class="m-20">
     <div
-      class="w-full h-96 bg-[url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=800&q=80')] bg-fixed bg-cover bg-center bg-no-repeat"
+      class="h-96 bg-[url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=800&q=80')] bg-fixed bg-cover bg-center bg-no-repeat"
     ></div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 py-20">
       <div
@@ -117,7 +117,7 @@
       >
         <motion.div
           :animate="{
-            x: selectedBox === 'Philosophy' ? 400 : 0,
+            x: selectedBox === 'Philosophy' ? 300 : 0,
             y: selectedBox === 'Philosophy' ? 75 : 0,
             rotate: selectedBox === 'Philosophy' ? -15 : 0,
           }"
@@ -133,7 +133,7 @@
         ></motion.div>
         <motion.div
           :animate="{
-            x: selectedBox === 'Philosophy' ? -400 : 0,
+            x: selectedBox === 'Philosophy' ? -300 : 0,
             y: selectedBox === 'Philosophy' ? -75 : 0,
             rotate: selectedBox === 'Philosophy' ? -15 : 0,
           }"
@@ -163,7 +163,17 @@
         <motion.div
           class="relative py-12 px-10 flex flex-col items-center justify-center gap-4"
         >
-          <h2
+          <motion.h2
+            :animate="{
+              y: selectedBox === 'Philosophy' ? 0 : 50,
+            }"
+            :transition="{
+              duration: 0.3,
+              ease: 'easeInOut',
+              type: 'spring',
+              stiffness: 100,
+              damping: 20,
+            }"
             class="text-2xl font-bold mb-2"
             :class="
               selectedBox === 'Philosophy'
@@ -172,9 +182,20 @@
             "
           >
             Our Philosophy
-          </h2>
+          </motion.h2>
 
-          <p
+          <motion.p
+            :animate="{
+              opacity: selectedBox === 'Philosophy' ? 1 : 0,
+              y: selectedBox === 'Philosophy' ? 0 : 50,
+            }"
+            :transition="{
+              duration: 0.3,
+              ease: 'easeInOut',
+              type: 'spring',
+              stiffness: 100,
+              damping: 20,
+            }"
             class="text-base mb-4 text-justify max-w-xl"
             :class="selectedBox === 'Philosophy' ? '' : 'text-text-elegant'"
           >
@@ -182,7 +203,7 @@
             intelligent. Our team is driven by innovation, user-centricity, and
             the transformative potential of AI to simplify complex tasks and
             unlock creativity for all.
-          </p>
+          </motion.p>
         </motion.div>
       </div>
       <div
@@ -192,7 +213,7 @@
       >
         <motion.div
           :animate="{
-            x: selectedBox === 'Technology' ? 400 : 0,
+            x: selectedBox === 'Technology' ? 300 : 0,
             y: selectedBox === 'Technology' ? 75 : 0,
             rotate: selectedBox === 'Technology' ? -15 : 0,
           }"
@@ -208,7 +229,7 @@
         ></motion.div>
         <motion.div
           :animate="{
-            x: selectedBox === 'Technology' ? -400 : 0,
+            x: selectedBox === 'Technology' ? -300 : 0,
             y: selectedBox === 'Technology' ? -75 : 0,
             rotate: selectedBox === 'Technology' ? -15 : 0,
           }"
@@ -238,7 +259,17 @@
         <motion.div
           class="relative py-12 px-10 flex flex-col items-center justify-center gap-4"
         >
-          <h2
+          <motion.h2
+            :animate="{
+              y: selectedBox === 'Technology' ? 0 : 50,
+            }"
+            :transition="{
+              duration: 0.3,
+              ease: 'easeInOut',
+              type: 'spring',
+              stiffness: 100,
+              damping: 20,
+            }"
             class="text-2xl font-bold mb-2"
             :class="
               selectedBox === 'Technology'
@@ -247,8 +278,19 @@
             "
           >
             The Technology
-          </h2>
-          <p
+          </motion.h2>
+          <motion.p
+            :animate="{
+              opacity: selectedBox === 'Technology' ? 1 : 0,
+              y: selectedBox === 'Technology' ? 0 : 50,
+            }"
+            :transition="{
+              duration: 0.3,
+              ease: 'easeInOut',
+              type: 'spring',
+              stiffness: 100,
+              damping: 20,
+            }"
             class="text-base text-justify mb-4 max-w-xl"
             :class="selectedBox === 'Technology' ? '' : 'text-text-elegant'"
           >
@@ -256,7 +298,7 @@
             flexibility of Vue.js. This synergy delivers a website building
             experience that’s both powerful and delightful—fast, responsive, and
             easy to use.
-          </p>
+          </motion.p>
         </motion.div>
       </div>
     </div>
@@ -418,7 +460,7 @@
 </template>
 
 <script setup>
-import { delay, motion } from "motion-v";
+import { animate, delay, motion } from "motion-v";
 import { ref } from "vue";
 const selectedBox = ref("mission");
 const hoveredBox = ref(null);

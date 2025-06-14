@@ -96,7 +96,16 @@ const child = {
         exit="leave"
         :style="{ transformOrigin: 'left' }"
       >
-        <router-link v-for="item in navItems" :key="item.key" :to="item.to">
+        <router-link
+          v-for="item in navItems"
+          :key="item.key"
+          :to="item.to"
+          @click="
+            () => {
+              menuIsOpen = false;
+            }
+          "
+        >
           <motion.div
             :variants="child"
             :style="{ transformOrigin: 'left' }"

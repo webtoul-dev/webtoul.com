@@ -2,7 +2,7 @@
   <section
     class="mx-auto p-8 py-20 bg-zinc-900 min-h-[calc(100vh-80px)] h-[calc(100vh-80px)] flex flex-col items-center gap-12 overflow-clip"
   >
-    <h1 class="text-5xl font-extrabold text-blue-highlight mb-4">
+    <h1 class="text-3xl md:text-5xl font-extrabold text-blue-highlight mb-4">
       See What You Can Create with<br />
       <motion.span
         v-for="(letter, index) in letters"
@@ -11,7 +11,7 @@
         :variants="letterVariants"
         initial="hidden"
         whileInView="visible"
-        class="text-section-white text-7xl"
+        class="text-section-white text-5xl md:text-7xl"
       >
         {{ letter }}
       </motion.span>
@@ -68,8 +68,8 @@
       />
     </div>
   </section>
-  <section id="examples" class="my-40 p-4">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+  <section id="examples" class="my-20 md:my-40 p-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 gap-y-24">
       <!-- Portfolio Example -->
       <div
         class="relative h-96 bg-blue-900 rounded-xl shadow p-6 flex flex-col items-center text-center"

@@ -149,7 +149,7 @@
       Choose the plan that fits your needs. Start for free or upgrade to Pro for
       advanced features and persistent sites.
     </p>
-    <div class="flex flex-wrap justify-center items-center gap-0">
+    <div class="grid grid-cols-1 place-items-center lg:grid-cols-3 gap-0">
       <div
         v-for="plan in pricing"
         :key="plan.name"
@@ -366,7 +366,7 @@
       </div>
     </div>
   </section>
-  <section class="pt-10 md:pt-40">
+  <section class="pt-10 md:pt-20">
     <div class="flex flex-col items-center gap-8 p-8">
       <h3
         class="font-semibold select-none cursor-default text-blue-highlight mb-1 flex items-center gap-1 text-2xl py-4"
@@ -613,14 +613,6 @@
       class="inline-block bg-section-white text-blue-highlight px-8 py-3 rounded-full text-lg font-semibold shadow hover:bg-blue-50 transition"
       >Get Started</router-link
     >
-  </section>
-  <!-- Note Section -->
-  <section class="bg-section-white">
-    <p class="text-zinc-muted text-base flex items-center gap-2">
-      <span class="material-symbols text-base align-middle">info</span>
-      Note: Customizations are session-based and not saved after you leave. For
-      persistent sites, stay tuned for future updates!
-    </p>
   </section>
 </template>
 

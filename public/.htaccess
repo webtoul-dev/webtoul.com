@@ -1,0 +1,48 @@
+# Apache configuration for Vue.js static export
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Allow direct access to assets
+    RewriteCond %{REQUEST_URI} ^/assets/
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^ - [L]
+
+    # Allow direct access to existing files (like images, css, js)
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^ - [L]
+
+    # Redirect all other requests to index.html
+    RewriteRule ^(.*) index.html [L]
+</IfModule>
+
+# Set proper MIME types
+<IfModule mod_mime.c>
+    AddType application/javascript .js
+    AddType text/css .css
+    AddType image/svg+xml .svg
+    AddType image/webp .webp
+    AddType font/woff .woff
+    AddType font/woff2 .woff2
+</IfModule>
+
+# Enable Cors
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    
+    # Cache control for static assets
+    <FilesMatch "\.(ico|pdf|jpg|jpeg|png|webp|gif|svg|js|css|woff|woff2)$">
+        Header set Cache-Control "max-age=31536000, public"
+    </FilesMatch>
+</IfModule>
+
+# Enable compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/json image/svg+xml
+</IfModule>
+
+# Set default charset
+AddDefaultCharset utf-8
+
+# Disable directory listing
+Options -Indexes

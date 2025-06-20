@@ -4,10 +4,9 @@ import FeaturesPage from "./components/FeaturesPage.vue";
 import ShowcasePage from "./components/ShowcasePage.vue";
 import LearnPage from "./components/LearnPage.vue";
 import AboutPage from "./components/AboutPage.vue";
-import TemplatesGallery from "./components/TemplatesGallery.vue";
+import ContactPage from "./components/ContactPage.vue";
 import Pricing from "./components/Pricing.vue";
 import UserAuth from "./components/UserAuth.vue";
-import AccountSettings from "./components/AccountSettings.vue";
 import GuidePage from "./components/GuidePage.vue";
 import BlogPage from "./components/BlogPage.vue";
 import AuthCallback from "./components/AuthCallback.vue";
@@ -28,10 +27,9 @@ const routes = [
   { path: "/showcase", name: "Showcase", component: ShowcasePage },
   { path: "/learn", name: "Learn", component: LearnPage },
   { path: "/about", name: "About", component: AboutPage },
-  { path: "/templates", name: "Templates", component: TemplatesGallery },
+  { path: "/contact", name: "Contact", component: ContactPage },
   { path: "/pricing", name: "Pricing", component: Pricing },
   { path: "/auth", name: "Sign In", component: UserAuth },
-  { path: "/settings", name: "Account", component: AccountSettings },
   {
     path: "/learn/guide/:id",
     name: "Guide",

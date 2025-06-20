@@ -142,7 +142,10 @@
                   <li
                     class="hover:text-blue-highlight transition-colors duration-150 ease-in font-bold"
                   >
-                    <a href="#">LinkedIn</a>
+                    <a
+                      href="https://www.linkedin.com/company/web-toul-solutions"
+                      >LinkedIn</a
+                    >
                   </li>
                   <li
                     class="hover:text-blue-highlight transition-colors duration-150 ease-in font-bold"
@@ -185,6 +188,7 @@
         </div>
       </div>
     </motion.footer>
+    <CookieConsent />
   </div>
 </template>
 
@@ -196,6 +200,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { motion, stagger } from "motion-v";
 import mainNav from "./components/mainNav.vue";
 import mobileNav from "./components/mobileNav.vue";
+import CookieConsent from "./components/CookieConsent.vue";
 
 const scrolled = ref(false);
 const user = ref(null);

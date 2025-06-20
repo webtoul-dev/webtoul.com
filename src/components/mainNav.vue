@@ -2,10 +2,12 @@
 import { useRoute } from "vue-router";
 
 const navItems = [
+  { key: "home", label: "Home", to: "/", icon: "home" },
   { key: "features", label: "Features", to: "/features", icon: "star" },
   { key: "showcase", label: "Showcase", to: "/showcase", icon: "visibility" },
   { key: "learn", label: "Learn", to: "/learn", icon: "school" },
   { key: "about", label: "About", to: "/about", icon: "info" },
+  { key: "contact", label: "Contact", to: "/contact", icon: "mail" },
   { key: "blog", label: "Blog", to: "/blog", icon: "article" },
 ];
 const props = defineProps(["userData"]);
